@@ -66,6 +66,10 @@
             rel="shortcut icon"
             href="{{ asset('assets/images/favicon.png') }}"
         />
+        
+	<!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}">
+  <!-- End plugin css for this page -->
     </head>
     <body>
         @yield('body')
@@ -87,5 +91,7 @@
         <!-- Custom js for this page -->
         <script src="../assets/js/dashboard-light.js"></script>
         <!-- End custom js for this page -->
+
+        
     </body>
 </html>
