@@ -94,14 +94,14 @@
                                                                                 class="tgl-perintah"
                                                                             >
                                                                                 <div
-                                                                                    class="btn btn-danger btn-xs mb-3"
+                                                                                    class="btn btn-danger btn-xs mb-3 disabled"
                                                                                 >
                                                                                     Unit
                                                                                     :
                                                                                     PMB
                                                                                 </div>
                                                                                 <div
-                                                                                    class="btn btn-danger btn-xs mb-3"
+                                                                                    class="btn btn-danger btn-xs mb-3 disabled"
                                                                                 >
                                                                                     Kategori
                                                                                     :

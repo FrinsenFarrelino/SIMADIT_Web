@@ -56,7 +56,7 @@ Route::get('/tenggat-waktu-auditor',function(){
 Route::get('/daftar-audit-auditor',function(){
     return view('auditor.daftar-audit-auditor.daftar-audit-auditor');
 });
-Route::get('form-persetujuan-auditor',function(){
+Route::get('form-persetujuan-auditor-email',function(){
     return view('auditor.email-auditor.form-persetujuan-auditor');
 });
 Route::get('/daftar-penugasan-audit',function(){

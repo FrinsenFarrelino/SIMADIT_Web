@@ -219,6 +219,7 @@
                     <button
                         type="button"
                         class="btn btn-success"
+                        id="btn-validasi"
                         data-bs-toggle="modal"
                         data-bs-target="#validasi-persetujuan"
                     >
@@ -272,15 +273,40 @@
                                     <div class="row p-2">
                                         <h6 class="mb-2">Tanda Tangan</h6>
                                         <div class="border border-2 p-2">
-                                            <div class="btn btn-primary">
+                                            <div
+                                                class="btn btn-primary"
+                                                id="btn-qr"
+                                            >
                                                 Buat QR
                                             </div>
+                                            <div
+                                                class="btn btn-danger"
+                                                id="btn-hapus-qr"
+                                            >
+                                                Hapus
+                                            </div>
                                         </div>
+                                        <div
+                                            class="border border-2 p-2"
+                                            id="gbr-ttd"
+                                        >
+                                            <img
+                                                src="{{
+                                                    asset(
+                                                        'assets/images/ia.png'
+                                                    )
+                                                }}"
+                                                alt="logo"
+                                                width="100"
+                                            />
+                                        </div>
+                                      
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button
                                         class="btn btn-primary mb-3"
+                                        
                                         onclick="Swal.fire({
                                         title: 'Validasi?',
                                        
@@ -289,7 +315,7 @@
                                         cancelButtonText: 'Tidak',
                                         confirmButtonColor: '#3085d6',
                                         cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Simpan'
+                                        confirmButtonText: 'Iya'
                                       }).then((result) => {
                                         if (result.isConfirmed) {
                                           Swal.fire(
@@ -315,6 +341,9 @@
 <script>
     $(function () {
         $("#alasan-tdk-setuju").hide();
+        $("#gbr-ttd").hide();
+        $("#list-bukti-alasan").hide();
+        $("#btn-validasi").prop("disabled", true);
 
         $("#tidak-setuju").click(function () {
             $("#alasan-tdk-setuju").show();
@@ -323,10 +352,24 @@
             $("#alasan-tdk-setuju").hide();
         });
 
-        $("#list-bukti-alasan").hide();
         $("#submit-bukti-alasan").click(function () {
             $("#list-bukti-alasan").show();
         });
+
+        $("#btn-qr").click(function () {
+            $("#gbr-ttd").show();
+        });
+        $("#btn-hapus-qr").click(function () {
+            $("#gbr-ttd").hide();
+        });
+
+        $("#setuju").click(function () {
+            $("#btn-validasi").prop("disabled", false);
+        });
+        $("#tidak-setuju").click(function () {
+            $("#btn-validasi").prop("disabled", false);
+        });
+        
     });
 </script>
 

@@ -20,6 +20,7 @@
                         <div class="col-md-12 grid-margin">
                             <div class="d-flex flex-row-reverse bd-highlight">
                                 <button
+                                id="simpan-perubahan"
                                     class="btn btn-primary mb-3"
                                     onclick="Swal.fire({
                                         title: 'Ingin simpan perubahan?',
@@ -144,8 +145,7 @@
                                                 >
                                                     <a
                                                         class="btn btn-success"
-                                                        data-bs-toggle="collapse"
-                                                        href="#Lampiran"
+                                                        id="btn-submit"
                                                         role="button"
                                                         aria-expanded="false"
                                                         aria-controls="collapseExample"
@@ -161,8 +161,8 @@
                                                     <h6>List Dokumen (File)</h6>
                                                 </div>
                                                 <div
-                                                    class="row border-bottom mt-3 collapse"
-                                                    id="Lampiran"
+                                                    class="row border-bottom mt-3"
+                                                    id="lampiran-dokumen"
                                                 >
                                                     <div
                                                         class="col-md-10 grid-margin stretch-card"
@@ -191,6 +191,7 @@
                                                         <button
                                                             type="button"
                                                             class="btn btn-primary btn-icon btn-xs"
+                                                            id="hapus"
                                                         >
                                                             <i
                                                                 data-feather="trash"
@@ -259,6 +260,7 @@
                                         for="EDM02"
                                         >EDM02</label
                                     >
+
                                     <input
                                         type="checkbox"
                                         class="btn-check"
@@ -269,6 +271,7 @@
                                         for="APO01"
                                         >APO01</label
                                     >
+
                                     <input
                                         type="checkbox"
                                         class="btn-check"
@@ -276,18 +279,8 @@
                                     />
                                     <label
                                         class="btn btn-outline-primary"
-                                        for="BAI05"
-                                        >BAI05</label
-                                    >
-                                    <input
-                                        type="checkbox"
-                                        class="btn-check"
-                                        id="BAI05"
-                                    />
-                                    <label
-                                        class="btn btn-outline-primary"
-                                        for="BAI05"
-                                        >BAI05</label
+                                        for="BAI03"
+                                        >BAI03</label
                                     >
                                     <input
                                         type="checkbox"
@@ -786,10 +779,8 @@
                                                                         Audit
                                                                     </h6>
                                                                     <input
-                                                                        type="text"
+                                                                        type="date"
                                                                         class="form-control"
-                                                                        id="exampleInputText1"
-                                                                        placeholder="Masukkan rincian waktu penyelesaian"
                                                                     />
                                                                 </div>
                                                                 <div
@@ -813,6 +804,7 @@
                                                                 <button
                                                                     type="button"
                                                                     class="btn btn-success btn-xs"
+                                                                    data-bs-dismiss="modal"
                                                                 >
                                                                     Tambah
                                                                     Temuan
@@ -1333,6 +1325,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                     <!-- Button trigger modal -->
                                     <button
                                         type="button"
+                                        id="btn-validasi"
                                         class="btn btn-success"
                                         data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"
@@ -1398,16 +1391,54 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                         >
                                                             <div
                                                                 class="btn btn-primary"
+                                                                id="btn-qr"
                                                             >
                                                                 Buat QR
                                                             </div>
+                                                            <div
+                                                                class="btn btn-danger"
+                                                                id="btn-hapus-qr"
+                                                            >
+                                                                Hapus
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="border border-2 p-2"
+                                                            id="gbr-ttd"
+                                                        >
+                                                            <img
+                                                                src="{{
+                                                                    asset(
+                                                                        'assets/images/ia.png'
+                                                                    )
+                                                                }}"
+                                                                alt="logo"
+                                                                width="100"
+                                                            />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button
-                                                        type="button"
-                                                        class="btn btn-success"
+                                                        class="btn btn-primary mb-3"
+                                                        onclick="Swal.fire({
+                                                    title: 'Validasi?',
+                                                   
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    cancelButtonText: 'Tidak',
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Iya'
+                                                  }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                      Swal.fire(
+                                                        'Berhasil',
+                                                        'Validasi Berhasil',
+                                                        'success'
+                                                      )
+                                                    }
+                                                  })"
                                                     >
                                                         Validasi
                                                     </button>
@@ -1430,7 +1461,6 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
     </div>
 </div>
 
-
 <!-- Plugin js for this page -->
 <script src="../../../assets/vendors/sweetalert2/sweetalert2.min.js"></script>
 <!-- End plugin js for this page -->
@@ -1441,18 +1471,26 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
     $(function () {
+        $("#btn-validasi").prop("disabled", true);
         $("#desc").hide();
         $("#pertanyaan").hide();
         $("#isi-temuan").hide();
         $("#isi-nilai-auditee").hide();
         $("#isi-jurnal").hide();
         $("#cetak-framework").hide();
+        $("#lampiran-dokumen").hide();
+        $("#list").hide();
+        $("#gbr-ttd").hide();
+
         $("#EDM01").click(function () {
             $("#desc").toggle();
             $("#cetak-framework").toggle();
             $("#pertanyaan").toggle();
         });
-        $("#list").hide();
+
+        $("#btn-submit").click(function () {
+            $("#lampiran-dokumen").show();
+        });
         $("#submit-bukti").click(function () {
             $("#list").show();
         });
@@ -1465,6 +1503,20 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
         $("#jurnal").click(function () {
             $("#isi-jurnal").toggle();
         });
+        $("#hapus").click(function () {
+            $("#lampiran-dokumen").hide();
+        });
+
+        $("#btn-qr").click(function () {
+            $("#gbr-ttd").show();
+        });
+        $("#btn-hapus-qr").click(function () {
+            $("#gbr-ttd").hide();
+        });
+        $("#simpan-perubahan").click(function () {
+            $("#btn-validasi").prop("disabled", false);
+        });
+      
     });
 </script>
 @endsection

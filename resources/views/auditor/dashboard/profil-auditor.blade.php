@@ -884,7 +884,7 @@
                                                                         type="button"
                                                                         class="btn btn-primary"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#detail-audit"
+                                                                        data-bs-target="#detail-history"
                                                                     >
                                                                         Lihat
                                                                         Detail
@@ -896,7 +896,7 @@
                                                                     <!-- Modal -->
                                                                     <div
                                                                         class="modal fade"
-                                                                        id="detail-audit"
+                                                                        id="detail-history"
                                                                         tabindex="-1"
                                                                         aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true"

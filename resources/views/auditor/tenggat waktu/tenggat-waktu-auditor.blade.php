@@ -189,11 +189,11 @@
                                                                                         class="row"
                                                                                     >
                                                                                         <div
-                                                                                            class="judul-temuan"
+                                                                                            class="judul-temuan mb-3"
                                                                                         >
                                                                                             <label
                                                                                                 for="judul-temuan"
-                                                                                                class="form-label"
+                                                                                                class="form-label fw-bold"
                                                                                                 >Judul
                                                                                                 Temuan</label
                                                                                             >
@@ -204,6 +204,7 @@
                                                                                                 autocomplete="off"
                                                                                                 placeholder="Judul Temuan"
                                                                                                 value="SDM Pengelola Keuangan"
+                                                                                                disabled
                                                                                             />
                                                                                         </div>
                                                                                     </div>
@@ -211,33 +212,33 @@
                                                                                         class="row"
                                                                                     >
                                                                                         <div
-                                                                                            class="judul-temuan"
+                                                                                            class="fakta-temuan mb-3"
                                                                                         >
                                                                                             <label
-                                                                                                for="judul-temuan"
-                                                                                                class="form-label"
+                                                                                                for="fakta-temuan"
+                                                                                                class="form-label fw-bold"
                                                                                                 >Fakta
                                                                                                 Temuan</label
                                                                                             >
-                                                                                            <input
-                                                                                                type="text"
+                                                                                            <textarea
                                                                                                 class="form-control"
-                                                                                                id="judul-temuan"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Judul Temuan"
-                                                                                                value="Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan."
-                                                                                            />
+                                                                                                rows="10"
+                                                                                                value="jcnskjcn"
+                                                                                                disabled
+                                                                                            >
+Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
+                                                                                            >
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
                                                                                         class="row"
                                                                                     >
                                                                                         <div
-                                                                                            class="judul-temuan"
+                                                                                            class="rincian-waktu mb-3"
                                                                                         >
                                                                                             <label
-                                                                                                for="judul-temuan"
-                                                                                                class="form-label"
+                                                                                                for="rincian-waktu"
+                                                                                                class="form-label fw-bold"
                                                                                                 >Rincian
                                                                                                 Waktu
                                                                                                 Penyelesaian
@@ -245,9 +246,10 @@
                                                                                             <input
                                                                                                 type="text"
                                                                                                 class="form-control"
-                                                                                                id="judul-temuan"
+                                                                                                id="rincian-waktu"
                                                                                                 autocomplete="off"
-                                                                                                placeholder="Akan diselesaikan dalam 2 minggu kerja"
+                                                                                                value="Akan diselesaikan dalam 2 minggu kerja"
+                                                                                                disabled
                                                                                             />
                                                                                         </div>
                                                                                     </div>
@@ -255,11 +257,11 @@
                                                                                         class="row"
                                                                                     >
                                                                                         <div
-                                                                                            class="judul-temuan"
+                                                                                            class="waktu-selesai mb-3"
                                                                                         >
                                                                                             <label
-                                                                                                for="judul-temuan"
-                                                                                                class="form-label"
+                                                                                                for="waktu-selesai"
+                                                                                                class="form-label fw-bold"
                                                                                                 >Waktu
                                                                                                 Selesai
                                                                                                 Penyelesaian
@@ -270,40 +272,22 @@
                                                                                         <div
                                                                                             class="row"
                                                                                         >
-                                                                                            <div
-                                                                                                class="btn-group"
-                                                                                            >
-                                                                                                <button
-                                                                                                    type="button"
-                                                                                                    class="btn btn-danger dropdown-toggle"
-                                                                                                    data-bs-toggle="dropdown"
-                                                                                                    aria-expanded="false"
-                                                                                                >
-                                                                                                    Action
-                                                                                                </button>
-                                                                                                <ul
-                                                                                                    class="dropdown-menu"
-                                                                                                >
-                                                                                                    <li>
-                                                                                                        <a
-                                                                                                            class="dropdown-item"
-                                                                                                            href="#"
-                                                                                                            >Action</a
-                                                                                                        >
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                            </div>
+                                                                                            <input
+                                                                                                type="date"
+                                                                                                class="form-control"
+                                                                                                disabled
+                                                                                            />
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
                                                                                         class="row"
                                                                                     >
                                                                                         <div
-                                                                                            class="judul-temuan"
+                                                                                            class="lampiran"
                                                                                         >
                                                                                             <label
-                                                                                                for="judul-temuan"
-                                                                                                class="form-label"
+                                                                                                for="lampiran"
+                                                                                                class="form-label fw-bold"
                                                                                                 >Lampiran
                                                                                             </label>
                                                                                         </div>
@@ -311,7 +295,7 @@
                                                                                             class="row"
                                                                                         >
                                                                                             <div
-                                                                                                class="border border-2 p-2 col-5 me-2"
+                                                                                                class="border border-2 p-2 col-5 me-2 bg-secondary bg-opacity-50"
                                                                                             >
                                                                                                 <p
                                                                                                     class="fs-6"
@@ -322,7 +306,7 @@
                                                                                                 </p>
                                                                                             </div>
                                                                                             <div
-                                                                                                class="border border-2 p-2 col-5"
+                                                                                                class="border border-2 p-2 col-5 bg-secondary bg-opacity-50"
                                                                                             >
                                                                                                 <p
                                                                                                     class="fs-6"
@@ -341,49 +325,18 @@
                                                                 </td>
                                                                 <td>
                                                                     <div
-                                                                        class="btn btn-primary"
+                                                                        class="btn btn-primary disabled"
                                                                     >
                                                                         Ubah
                                                                     </div>
                                                                     <div
-                                                                        class="btn btn-danger"
+                                                                        class="btn btn-danger disabled"
                                                                     >
                                                                         Hapus
                                                                     </div>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    SDM
-                                                                    Pengelola
-                                                                    Keuangan
-                                                                </td>
-
-                                                                <td>
-                                                                    15 September
-                                                                    2022
-                                                                </td>
-                                                                <td>
-                                                                    <div
-                                                                        class="btn btn-info text-white"
-                                                                    >
-                                                                        Lihat
-                                                                        Temuan
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div
-                                                                        class="btn btn-primary"
-                                                                    >
-                                                                        Ubah
-                                                                    </div>
-                                                                    <div
-                                                                        class="btn btn-danger"
-                                                                    >
-                                                                        Hapus
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
+                                                          
                                                         </tbody>
                                                     </table>
                                                 </div>
