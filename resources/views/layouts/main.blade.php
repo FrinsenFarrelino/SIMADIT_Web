@@ -66,10 +66,33 @@
             rel="shortcut icon"
             href="{{ asset('assets/images/favicon.png') }}"
         />
-        
-	<!-- Plugin css for this page -->
-  <link rel="stylesheet" href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}">
-  <!-- End plugin css for this page -->
+
+        <!-- Plugin css for this page -->
+        <link
+            rel="stylesheet"
+            href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}"
+        />
+        <!-- End plugin css for this page -->
+
+        <!-- DataTable -->
+        <link
+            rel="stylesheet"
+            href="{{
+                asset(
+                    'assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css'
+                )
+            }}"
+        />
+        <!-- end datatable -->
+
+        <link
+            rel="stylesheet"
+            href="../../../assets/vendors/flatpickr/flatpickr.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../../../assets/vendors/prismjs/themes/prism.css"
+        />
     </head>
     <body>
         @yield('body')
@@ -92,6 +115,18 @@
         <script src="../assets/js/dashboard-light.js"></script>
         <!-- End custom js for this page -->
 
-        
+        <!-- Plugin js for this page -->
+        <script src="../../../assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+        <!-- End plugin js for this page -->
+
+        <!-- Custom js for this page -->
+        <script src="../../../assets/js/sweet-alert.js"></script>
+        <!-- End custom js for this page -->
+
+        <script src="../../../assets/vendors/flatpickr/flatpickr.min.js"></script>
+        <script src="../../../assets/js/flatpickr.js"></script>
+
+        <script src="../../../assets/vendors/prismjs/prism.js"></script>
+        <script src="../../../assets/vendors/clipboard/clipboard.min.js"></script>
     </body>
 </html>

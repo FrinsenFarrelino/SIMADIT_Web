@@ -63,9 +63,9 @@
                                                 <td>
                                                     <a
                                                         class="btn btn-primary btn-xs"
-                                                        href="/form-bukti-auditee"
+                                                        href="/tindak-bukti-auditee"
                                                         role="button"
-                                                        >Tindak</a
+                                                        ><i data-feather="eye" class="feather-16"></i></a
                                                     >
                                                 </td>
                                             </tr>

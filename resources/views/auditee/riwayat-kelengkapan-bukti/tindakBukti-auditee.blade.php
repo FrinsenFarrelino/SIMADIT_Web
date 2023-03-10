@@ -19,18 +19,14 @@
                 <div class="col-12 col-xl-12 stretch-card">
                     <div class="row flex-grow-1">
                         <div class="col-md-12 grid-margin">
-                            <div class="d-flex flex-row-reverse bd-highlight">
-                                <div class="btn btn-success mb-3">
-                                    Simpan Perubahan
-                                </div>
-                            </div>
+                           
                             <div class="card">
                                 <div class="card-body">
                                     <div
                                         class="d-flex justify-content-between align-items-baseline"
                                     >
                                         <h3 class="card-title mb-3 fs-5">
-                                            List Unit
+                                            Daftar Unit
                                         </h3>
                                     </div>
                                     <div class="row">
@@ -229,6 +225,7 @@ Komentar Auditor</textarea
                                         type="checkbox"
                                         class="btn-check"
                                         id="EDM01"
+                                        checked
                                     />
                                     <label
                                         class="btn btn-outline-primary"
@@ -239,6 +236,7 @@ Komentar Auditor</textarea
                                         type="checkbox"
                                         class="btn-check"
                                         id="EDM02"
+                                        disabled
                                     />
                                     <label
                                         class="btn btn-outline-primary"
@@ -249,6 +247,7 @@ Komentar Auditor</textarea
                                         type="checkbox"
                                         class="btn-check"
                                         id="APO01"
+                                        disabled
                                     />
                                     <label
                                         class="btn btn-outline-primary"
@@ -259,6 +258,7 @@ Komentar Auditor</textarea
                                         type="checkbox"
                                         class="btn-check"
                                         id="BAI03"
+                                        disabled
                                     />
                                     <label
                                         class="btn btn-outline-primary"
@@ -269,6 +269,7 @@ Komentar Auditor</textarea
                                         type="checkbox"
                                         class="btn-check"
                                         id="BAI05"
+                                        disabled
                                     />
                                    
                                     
@@ -376,7 +377,7 @@ Komentar Auditor</textarea
                                                 class="d-flex flex-row-reverse bd-highlight"
                                             >
                                                 <div
-                                                    class="btn btn-primary mt-3"
+                                                    class="btn btn-primary mt-3 disabled"
                                                 >
                                                     Submit
                                                 </div>
@@ -425,7 +426,7 @@ Komentar Auditor</textarea
                                                 class="d-flex flex-row-reverse bd-highlight"
                                             >
                                                 <div
-                                                    class="btn btn-primary mt-3"
+                                                    class="btn btn-primary mt-3 disabled"
                                                 >
                                                     Submit
                                                 </div>
@@ -441,7 +442,7 @@ Komentar Auditor</textarea
                                                     <div
                                                         class="col-md-10 grid-margin stretch-card"
                                                     >
-                                                        <p class="fs-5">
+                                                        <p class="fs-6">
                                                             1.Lampiran1.jpg
                                                         </p>
                                                     </div>
@@ -478,7 +479,7 @@ Komentar Auditor</textarea
                                                     <div
                                                         class="col-md-10 grid-margin stretch-card"
                                                     >
-                                                        <p class="fs-5">
+                                                        <p class="fs-6">
                                                             2.Lampiran1.jpg
                                                         </p>
                                                     </div>
@@ -649,7 +650,7 @@ Komentar Auditor</textarea
                                                 class="d-flex flex-row-reverse bd-highlight"
                                             >
                                                 <div
-                                                    class="btn btn-primary mt-3"
+                                                    class="btn btn-primary mt-3 disabled"
                                                 >
                                                     Submit
                                                 </div>
@@ -698,7 +699,7 @@ Komentar Auditor</textarea
                                                 class="d-flex flex-row-reverse bd-highlight"
                                             >
                                                 <div
-                                                    class="btn btn-primary mt-3"
+                                                    class="btn btn-primary mt-3 disabled"
                                                 >
                                                     Submit
                                                 </div>

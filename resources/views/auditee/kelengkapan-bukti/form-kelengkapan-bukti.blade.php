@@ -25,27 +25,11 @@
                         <div class="col-md-12 grid-margin">
                             <div class="d-flex flex-row-reverse bd-highlight">
                                 <button
-                                    class="btn btn-primary mb-3"
-                                    onclick="Swal.fire({
-                                        title: 'Ingin simpan perubahan?',
-                                       
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        cancelButtonText: 'Tidak',
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Simpan'
-                                      }).then((result) => {
-                                        if (result.isConfirmed) {
-                                          Swal.fire(
-                                            'Berhasil',
-                                            'Data Berhasil Disimpan',
-                                            'success'
-                                          )
-                                        }
-                                      })"
+                                    class="btn btn-primary mb-3 btn-xs"
+                                    onclick="showSwal('simpan-perubahan')"
                                 >
-                                    Simpan Perubahan
+                                   <i data-feather="save" class="feather-16"></i>
+                                   Simpan Perubahan
                                 </button>
                             </div>
                             <div class="card">
@@ -916,19 +900,7 @@ Komentar Auditor</textarea
                             </div>
                         </div>
                      
-                        {{--
-                        <div class="row">
-                            <div class="col-5 col-xl-5">
-                                <div class="btn btn-danger">Kembali</div>
-                            </div>
-                            <div class="col-5 col-xl-5">
-                                <div class="btn btn-danger">Kembali</div>
-                            </div>
-                            <div class="col-1 col-xl-1">
-                                <div class="btn btn-danger">Kembali</div>
-                            </div>
-                        </div>
-                        --}}
+                       
                         <div class="container text-center">
                             <div class="row align-items-center">
                                 <div class="col">
@@ -1023,7 +995,8 @@ Komentar Auditor</textarea
                                                         cancelButtonText: 'Tidak',
                                                         confirmButtonColor: '#3085d6',
                                                         cancelButtonColor: '#d33',
-                                                        confirmButtonText: 'Iya'
+                                                        confirmButtonText: 'Iya',
+                                                        
                                                       }).then((result) => {
                                                         if (result.isConfirmed) {
                                                           Swal.fire(

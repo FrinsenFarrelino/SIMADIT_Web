@@ -167,7 +167,7 @@
                                                     class="btn btn-primary btn-xs"
                                                     href="/form-bukti-auditee"
                                                     role="button"
-                                                    >Tindak</a
+                                                    >Tindak Lanjut</a
                                                 >
                                             </td>
                                         </tr>
@@ -184,9 +184,9 @@
                                             <td>
                                                 <a
                                                     class="btn btn-primary btn-xs"
-                                                    href="#"
+                                                    href="/form-bukti-auditee"
                                                     role="button"
-                                                    >Tindak</a
+                                                    >Tindak Lanjut</a
                                                 >
                                             </td>
                                         </tr>
@@ -203,9 +203,9 @@
                                             <td>
                                                 <a
                                                     class="btn btn-primary btn-xs"
-                                                    href="#"
+                                                    href="/form-bukti-auditee"
                                                     role="button"
-                                                    >Tindak</a
+                                                    >Tindak Lanjut</a
                                                 >
                                             </td>
                                         </tr>

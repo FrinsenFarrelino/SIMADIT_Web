@@ -1,18 +1,17 @@
 @extends('layouts.main') @section('body')
 <div class="main-wrapper">
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     @include('auditor.partial.sidebar-auditor')
-    <!-- End of Sidebar -->
+    <!-- END SIDEBAR -->
+
     <div class="page-wrapper">
+        <!-- NAVBAR -->
         @include('auditor.partial.navbar-auditor')
+        <!-- END NAVBAR -->
+
+        <!-- CONTENT -->
         <div class="page-content">
-            <div
-                class="d-flex justify-content-between align-items-center flex-wrap grid-margin"
-            >
-                <div>
-                    <h4 class="mb-3 mb-md-0">Hasil Audit</h4>
-                </div>
-            </div>
+            <h3 class="mb-3 mb-md-0">Hasil Audit</h3>
 
             <div class="row">
                 <div class="col-12 col-xl-12 stretch-card">
@@ -20,37 +19,20 @@
                         <div class="col-md-12 grid-margin">
                             <div class="d-flex flex-row-reverse bd-highlight">
                                 <button
-                                id="simpan-perubahan"
-                                    class="btn btn-primary mb-3"
-                                    onclick="Swal.fire({
-                                        title: 'Ingin simpan perubahan?',
-                                       
-                                        icon: 'warning',
-                                        showCancelButton: true,
-                                        cancelButtonText: 'Tidak',
-                                        confirmButtonColor: '#3085d6',
-                                        cancelButtonColor: '#d33',
-                                        confirmButtonText: 'Simpan'
-                                      }).then((result) => {
-                                        if (result.isConfirmed) {
-                                          Swal.fire(
-                                            'Berhasil',
-                                            'Data Berhasil Disimpan',
-                                            'success'
-                                          )
-                                        }
-                                      })"
+                                    class="btn btn-success mb-3 btn-xs"
+                                    onclick="showSwal('simpan-perubahan')"
+                                    id="simpan-perubahan"
                                 >
-                                    Simpan Perubahan
+                                    <i data-feather="save" class="feather-16">
+                                    </i
+                                    >Simpan Perubahan
                                 </button>
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <div
-                                        class="d-flex justify-content-between align-items-baseline"
-                                    >
+                                    <div class="d-flex">
                                         <h3 class="card-title mb-3 fs-5">
-                                            List Unit
+                                            Daftar Unit
                                         </h3>
                                     </div>
                                     <div class="row">
@@ -117,17 +99,17 @@
                                 <div class="col-md-12 grid-margin">
                                     <div class="card">
                                         <div class="card-body">
-                                            <div
-                                                class="d-flex justify-content-between align-items-baseline"
+                                            <h3
+                                                class="card-title mb-3 fs-5 border-bottom border-2 pb-2"
                                             >
-                                                <h3
-                                                    class="card-title mb-3 fs-5 border-bottom border-2 pb-2"
-                                                >
-                                                    Dokumen Berita Acara
-                                                </h3>
-                                            </div>
+                                                Dokumen Berita Acara
+                                            </h3>
 
-                                            <div class="row border-bottom">
+                                            <!-- FORM FILE DOKUMEN -->
+                                            <div
+                                                class="row border-bottom"
+                                                id="form-file-dokumen"
+                                            >
                                                 <div
                                                     class="col-md-2 grid-margin stretch-card"
                                                 >
@@ -144,22 +126,19 @@
                                                     class="d-flex flex-row-reverse"
                                                 >
                                                     <a
-                                                        class="btn btn-success"
+                                                        class="btn btn-success btn-xs mb-3"
                                                         id="btn-submit"
                                                         role="button"
                                                         aria-expanded="false"
-                                                        aria-controls="collapseExample"
                                                     >
                                                         Submit
                                                     </a>
                                                 </div>
                                             </div>
-                                            <div class="row border-bottom">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card"
-                                                >
-                                                    <h6>List Dokumen (File)</h6>
-                                                </div>
+                                            <!--  END FORM FILE DOKUMEN -->
+
+                                            <!-- LIST LAMPIRAN -->
+                                            <div class="row border">
                                                 <div
                                                     class="row border-bottom mt-3"
                                                     id="lampiran-dokumen"
@@ -178,14 +157,17 @@
                                                         >
                                                             <i
                                                                 data-feather="eye"
+                                                                class="feather-16"
                                                             ></i>
                                                         </button>
+
                                                         <button
                                                             type="button"
                                                             class="btn btn-primary btn-icon btn-xs"
                                                         >
                                                             <i
                                                                 data-feather="download"
+                                                                class="feather-16"
                                                             ></i>
                                                         </button>
                                                         <button
@@ -195,16 +177,19 @@
                                                         >
                                                             <i
                                                                 data-feather="trash"
+                                                                class="feather-16"
                                                             ></i>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- END LIST LAMPIRAN -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 col-xl-12 stretch-card">
                             <div class="row flex-grow-1">
                                 <div class="col-md-12 grid-margin">
@@ -237,6 +222,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- PEMILIHAN SUBDOMAIN -->
                         <div class="col-12 col-xl-12 stretch-card">
                             <div class="row flex-grow-1">
                                 <div class="col-md-12 grid-margin">
@@ -315,7 +302,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex flex-row-reverse bd-highlight">
+                        <!-- END PEMILIHAN SUMBDOMAIN -->
+
+                        <!-- BUTTON  Cetak Framework-->
+                        <div class="d-flex flex-row-reverse bg-highlight">
                             <div
                                 class="btn btn-primary mb-3 btn-xs"
                                 id="cetak-framework"
@@ -324,6 +314,9 @@
                                 Cetak Framework
                             </div>
                         </div>
+                        <!-- BUTTON  Cetak Framework-->
+
+                        <!-- DESKRIPSI INDIKATOR -->
                         <div class="col-12 col-xl-12 stretch-card" id="desc">
                             <div class="row flex-grow-1">
                                 <div class="col-md-12 grid-margin">
@@ -335,7 +328,7 @@
                                                 <h3
                                                     class="card-title mb-3 fs-5"
                                                 >
-                                                    Deskripsi Subdomain
+                                                    Deskripsi Indikator
                                                 </h3>
                                             </div>
 
@@ -369,6 +362,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- END DESKRIPSI INDIKATOR -->
+
+                        <!-- PERTANYAAN -->
                         <div
                             class="col-12 col-xl-12 stretch-card"
                             id="pertanyaan"
@@ -418,12 +414,445 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="mt-4">
+                                                        <div
+                                                            class="input-group flatpickr"
+                                                            id="flatpickr-date"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control flatpickr-input"
+                                                                placeholder="Tanggal Penyelesaian"
+                                                                data-input=""
+                                                                readonly="readonly"
+                                                            />
+                                                            <span
+                                                                class="input-group-text input-group-addon"
+                                                                data-toggle=""
+                                                                ><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="feather feather-calendar"
+                                                                >
+                                                                    <rect
+                                                                        x="3"
+                                                                        y="4"
+                                                                        width="18"
+                                                                        height="18"
+                                                                        rx="2"
+                                                                        ry="2"
+                                                                    ></rect>
+                                                                    <line
+                                                                        x1="16"
+                                                                        y1="2"
+                                                                        x2="16"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="8"
+                                                                        y1="2"
+                                                                        x2="8"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="3"
+                                                                        y1="10"
+                                                                        x2="21"
+                                                                        y2="10"
+                                                                    ></line></svg
+                                                            ></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div
+                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                >
+                                                    <h6 class="mt-3">Nilai</h6>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="mt-4">
                                                         <input
                                                             type="text"
                                                             class="form-control"
                                                             id="exampleInputText1"
-                                                            placeholder="dd/mm/yyyy"
+                                                            placeholder="Masukkan Nilai"
                                                         />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-row-reverse bd-highlight"
+                                            >
+                                                <div
+                                                    class="btn btn-primary mt-3 mb-3"
+                                                >
+                                                    Submit
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="accordion"
+                                                id="accordionExample"
+                                            >
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingOne"
+                                                    >
+                                                        <button
+                                                            class="accordion-button"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseOne"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseOne"
+                                                        >
+                                                            Dokumen Bukti 1
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseOne"
+                                                        class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingTwo"
+                                                    >
+                                                        <button
+                                                            class="accordion-button collapsed"
+                                                            id="doc-2"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseTwo"
+                                                            aria-expanded="false"
+                                                            aria-controls="collapseTwo"
+                                                        >
+                                                            Dokumen Bukti 2
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-row-reverse bd-highlight"
+                                            >
+                                                <div
+                                                    class="btn btn-primary mt-3"
+                                                    id="submit-bukti-dokumen"
+                                                >
+                                                    Tambah Dokumen
+                                                </div>
+                                            </div>
+
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 grid-margin">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="card-title mb-3 fs-5">
+                                                Pertanyaan EDM01
+                                            </h3>
+                                            <h6 class="mt-4">
+                                                Pertanyaan ke-2 tentang EDM01
+                                            </h6>
+                                            <div class="row">
+                                                <div
+                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                >
+                                                    <h6 class="mt-2">
+                                                        Jawaban
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="mt-4">
+                                                        <div
+                                                            class="form-check form-check-inline"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                class="form-check-input"
+                                                                name="tipe-yes-no"
+                                                                id="yes"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="yes"
+                                                            >
+                                                                Iya
+                                                            </label>
+                                                        </div>
+                                                        <div
+                                                            class="form-check form-check-inline"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                class="form-check-input"
+                                                                name="tipe-yes-no"
+                                                                id="no"
+                                                            />
+                                                            <label
+                                                                class="form-check-label"
+                                                                for="no"
+                                                            >
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div
+                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                >
+                                                    <h6 class="mt-3">
+                                                        Tgl Penyelesaian
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="mt-4">
+                                                        <div
+                                                            class="input-group flatpickr"
+                                                            id="flatpickr-date"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control flatpickr-input"
+                                                                placeholder="Select date"
+                                                                data-input=""
+                                                                readonly="readonly"
+                                                            />
+                                                            <span
+                                                                class="input-group-text input-group-addon"
+                                                                data-toggle=""
+                                                                ><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="feather feather-calendar"
+                                                                >
+                                                                    <rect
+                                                                        x="3"
+                                                                        y="4"
+                                                                        width="18"
+                                                                        height="18"
+                                                                        rx="2"
+                                                                        ry="2"
+                                                                    ></rect>
+                                                                    <line
+                                                                        x1="16"
+                                                                        y1="2"
+                                                                        x2="16"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="8"
+                                                                        y1="2"
+                                                                        x2="8"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="3"
+                                                                        y1="10"
+                                                                        x2="21"
+                                                                        y2="10"
+                                                                    ></line></svg
+                                                            ></span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -453,44 +882,333 @@
                                                     Submit
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
-                                                >
-                                                    <h6 class="mt-3">
-                                                        File Bukti
-                                                    </h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div
-                                                        class="border border-2 p-2 mt-3"
+                                            <div
+                                                class="accordion"
+                                                id="accordionExample"
+                                            >
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingOne"
                                                     >
-                                                        <input
-                                                            class="form-control form-control-sm"
-                                                            id="formFileSm"
-                                                            type="file"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                        <button
+                                                            class="accordion-button"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseOne"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseOne"
+                                                        >
+                                                            Dokumen Bukti 1
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseOne"
+                                                        class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingTwo"
+                                                    >
+                                                        <button
+                                                            class="accordion-button collapsed"
+                                                            id="doc-2-pertanyaan2"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseTwo"
+                                                            aria-expanded="false"
+                                                            aria-controls="collapseTwo"
+                                                        >
+                                                            Dokumen Bukti 2
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-row-reverse bd-highlight"
+                                            >
+                                                <div
+                                                    class="btn btn-primary mt-3"
+                                                    id="submit-bukti-dokumen2"
+                                                >
+                                                    Tambah Dokumen
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 grid-margin">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="card-title mb-3 fs-5">
+                                                Pertanyaan EDM01
+                                            </h3>
+                                            <h6 class="mt-4">
+                                                Pertanyaan ke-3 tentang EDM01
+                                            </h6>
                                             <div class="row">
                                                 <div
                                                     class="col-md-2 grid-margin stretch-card mt-3"
                                                 >
-                                                    <h6 class="mt-3">
-                                                        Nama Bukti
+                                                    <h6 class="mt-2">
+                                                        Jawaban
                                                     </h6>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="mt-4">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            value="Amiah Burton"
-                                                            placeholder="Enter Name"
-                                                        />
+                                                      
+                                                        <table
+                                                        class="table table-striped"
+                                                    >
+                                                        <thead>
+                                                            <tr>
+                                                                <th
+                                                                    scope="col"
+                                                                >Sangat Tidak Setuju</th>
+                                                                <th scope="col">
+                                                                    Tidak Setuju
+                                                                </th>
+                                                                <th scope="col">
+                                                                    Netral
+                                                                </th>
+                                                                <th scope="col">
+                                                                    Setuju
+                                                                </th>
+                                                                <th scope="col">
+                                                                    Sangat Setuju
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                           
+                                                            
+                                                           
+                                                          
+                                                            <tr>
+                                                                
+                                                                <td>
+                                                                    <input
+                                                                        type="radio"
+                                                                        class="form-check-input"
+                                                                        name="radioInline5"
+                                                                        id="sgt-tdk-setuju"
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="radio"
+                                                                        class="form-check-input"
+                                                                        name="radioInline5"
+                                                                        id="tdk-setuju"
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="radio"
+                                                                        class="form-check-input"
+                                                                        name="radioInline5"
+                                                                        id="netral"
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="radio"
+                                                                        class="form-check-input"
+                                                                        name="radioInline5"
+                                                                        id="setuju"
+                                                                    />
+                                                                </td>
+                                                                <td>
+                                                                    <input
+                                                                        type="radio"
+                                                                        class="form-check-input"
+                                                                        name="radioInline5"
+                                                                        id="sangat-setuju"
+                                                                    />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                     </div>
                                                 </div>
                                             </div>
@@ -499,8 +1217,73 @@
                                                     class="col-md-2 grid-margin stretch-card mt-3"
                                                 >
                                                     <h6 class="mt-3">
-                                                        URL Bukti
+                                                        Tgl Penyelesaian
                                                     </h6>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <div class="mt-4">
+                                                        <div
+                                                            class="input-group flatpickr"
+                                                            id="flatpickr-date"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                class="form-control flatpickr-input"
+                                                                placeholder="Select date"
+                                                                data-input=""
+                                                                readonly="readonly"
+                                                            />
+                                                            <span
+                                                                class="input-group-text input-group-addon"
+                                                                data-toggle=""
+                                                                ><svg
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    width="24"
+                                                                    height="24"
+                                                                    viewBox="0 0 24 24"
+                                                                    fill="none"
+                                                                    stroke="currentColor"
+                                                                    stroke-width="2"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="feather feather-calendar"
+                                                                >
+                                                                    <rect
+                                                                        x="3"
+                                                                        y="4"
+                                                                        width="18"
+                                                                        height="18"
+                                                                        rx="2"
+                                                                        ry="2"
+                                                                    ></rect>
+                                                                    <line
+                                                                        x1="16"
+                                                                        y1="2"
+                                                                        x2="16"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="8"
+                                                                        y1="2"
+                                                                        x2="8"
+                                                                        y2="6"
+                                                                    ></line>
+                                                                    <line
+                                                                        x1="3"
+                                                                        y1="10"
+                                                                        x2="21"
+                                                                        y2="10"
+                                                                    ></line></svg
+                                                            ></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div
+                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                >
+                                                    <h6 class="mt-3">Nilai</h6>
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="mt-4">
@@ -508,8 +1291,7 @@
                                                             type="text"
                                                             class="form-control"
                                                             id="exampleInputText1"
-                                                            value="Amiah Burton"
-                                                            placeholder="Enter Name"
+                                                            placeholder="Masukkan Nilai"
                                                         />
                                                     </div>
                                                 </div>
@@ -519,179 +1301,240 @@
                                             >
                                                 <div
                                                     class="btn btn-primary mt-3"
-                                                    id="submit-bukti"
                                                 >
                                                     Submit
                                                 </div>
                                             </div>
+                                            <div
+                                                class="accordion"
+                                                id="accordionExample"
+                                            >
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingOne"
+                                                    >
+                                                        <button
+                                                            class="accordion-button"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseOne"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseOne"
+                                                        >
+                                                            Dokumen Bukti 1
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseOne"
+                                                        class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                            <div id="list">
-                                                <h6 class="mt-3 mb-3">
-                                                    List Bukti(File)
-                                                </h6>
-                                                <div
-                                                    class="border border-2 p-3 mt-2"
-                                                >
-                                                    <div
-                                                        class="row border-bottom"
-                                                    >
-                                                        <div
-                                                            class="col-md-10 grid-margin stretch-card"
-                                                        >
-                                                            <p class="fs-5">
-                                                                1.Lampiran1.jpg
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="eye"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="download"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="trash"
-                                                                ></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="row border-bottom mt-3 d-none"
-                                                        id="lampiran"
-                                                    >
-                                                        <div
-                                                            class="col-md-10 grid-margin stretch-card"
-                                                        >
-                                                            <p class="fs-5">
-                                                                2.Lampiran1.jpg
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="col-2 col-xl-2"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="eye"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="download"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="trash"
-                                                                ></i>
-                                                            </button>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <h6 class="mt-3 mb-3">
-                                                    List Bukti(URL)
-                                                </h6>
+                                                <div class="accordion-item">
+                                                    <h2
+                                                        class="accordion-header"
+                                                        id="headingTwo"
+                                                    >
+                                                        <button
+                                                            class="accordion-button collapsed"
+                                                            id="doc-2-pertanyaan2"
+                                                            type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseTwo"
+                                                            aria-expanded="false"
+                                                            aria-controls="collapseTwo"
+                                                        >
+                                                            Dokumen Bukti 2
+                                                        </button>
+                                                    </h2>
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo"
+                                                        data-bs-parent="#accordionExample"
+                                                    >
+                                                        <div
+                                                            class="accordion-body"
+                                                        >
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        File
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="border border-2 p-2 mt-3"
+                                                                    >
+                                                                        <input
+                                                                            class="form-control form-control-sm"
+                                                                            id="formFileSm"
+                                                                            type="file"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        Nama
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                                                >
+                                                                    <h6
+                                                                        class="mt-3"
+                                                                    >
+                                                                        URL
+                                                                        Bukti
+                                                                    </h6>
+                                                                </div>
+                                                                <div
+                                                                    class="col-md-10"
+                                                                >
+                                                                    <div
+                                                                        class="mt-4"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control"
+                                                                            id="exampleInputText1"
+                                                                            value="Amiah Burton"
+                                                                            placeholder="Enter Name"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-row-reverse bd-highlight"
+                                            >
                                                 <div
-                                                    class="border border-2 p-3 mt-2"
+                                                    class="btn btn-primary mt-3"
+                                                    id="submit-bukti-dokumen2"
                                                 >
-                                                    <div
-                                                        class="row border-bottom"
-                                                    >
-                                                        <div
-                                                            class="col-md-10 grid-margin stretch-card"
-                                                        >
-                                                            <p class="fs-6">
-                                                                1. Halaman Untag
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="eye"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="download"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="trash"
-                                                                ></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="row border-bottom mt-3"
-                                                    >
-                                                        <div
-                                                            class="col-md-10 grid-margin stretch-card"
-                                                        >
-                                                            <p class="fs-6">
-                                                                2. Halaman Untag
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="col-2 col-xl-2"
-                                                        >
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="eye"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="download"
-                                                                ></i>
-                                                            </button>
-                                                            <button
-                                                                type="button"
-                                                                class="btn btn-primary btn-icon btn-xs"
-                                                            >
-                                                                <i
-                                                                    data-feather="trash"
-                                                                ></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                    Tambah Dokumen
                                                 </div>
                                             </div>
                                         </div>
@@ -699,6 +1542,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- PERTANYAAN -->
+
+                        <!-- CHECKBOX TEMUAN -->
                         <div
                             class="col-12 col-xl-12 stretch-card"
                             id="isi-temuan"
@@ -722,7 +1568,6 @@
                                                     class="modal fade"
                                                     id="add-temuan"
                                                     tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true"
                                                 >
                                                     <div class="modal-dialog">
@@ -736,8 +1581,8 @@
                                                                     class="modal-title fs-5"
                                                                     id="exampleModalLabel"
                                                                 >
-                                                                    Ubah Temuan
-                                                                    Audit
+                                                                    Tambah
+                                                                    Temuan Audit
                                                                 </h1>
                                                                 <button
                                                                     type="button"
@@ -747,7 +1592,7 @@
                                                                 ></button>
                                                             </div>
                                                             <div
-                                                                class="modal-body text-start"
+                                                                class="modal-body"
                                                             >
                                                                 <div
                                                                     class="row p-2"
@@ -755,15 +1600,13 @@
                                                                     <h6
                                                                         class="mb-2"
                                                                     >
-                                                                        Rincian
-                                                                        Waktu
-                                                                        Penyelesaian
+                                                                        Temuan
                                                                     </h6>
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
                                                                         id="exampleInputText1"
-                                                                        placeholder="Masukkan rincian waktu penyelesaian"
+                                                                        placeholder="Masukkan Temuan"
                                                                     />
                                                                 </div>
                                                                 <div
@@ -772,16 +1615,116 @@
                                                                     <h6
                                                                         class="mb-2"
                                                                     >
-                                                                        Waktu
-                                                                        Selesai
-                                                                        Penyelesaian
+                                                                        Kategori
                                                                         Temuan
-                                                                        Audit
                                                                     </h6>
-                                                                    <input
-                                                                        type="date"
-                                                                        class="form-control"
-                                                                    />
+                                                                    <select
+                                                                        class="form-select"
+                                                                        name="kategori_select"
+                                                                        id="kategoriSelect"
+                                                                        aria-invalid="false"
+                                                                    >
+                                                                        <option
+                                                                            selected="Observasi"
+                                                                            disabled=""
+                                                                        >
+                                                                            Pilih
+                                                                            Kategori
+                                                                            Temuan
+                                                                        </option>
+                                                                        <option>
+                                                                            Observasi
+                                                                        </option>
+                                                                        <option>
+                                                                            Minor
+                                                                        </option>
+                                                                        <option>
+                                                                            Mayor
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div
+                                                                    class="row p-2"
+                                                                >
+                                                                    <h6
+                                                                        class="mb-2"
+                                                                    >
+                                                                        Keterangan
+                                                                        Temuan
+                                                                    </h6>
+                                                                    <textarea
+                                                                        type="text"
+                                                                        rows="5"
+                                                                        class="form-control text-wrap"
+                                                                        id="exampleInputText1"
+                                                                        placeholder="Tambahkan keterangan temuan"
+                                                                    ></textarea>
+                                                                </div>
+                                                                <div
+                                                                    class="row p-2"
+                                                                >
+                                                                    <h6
+                                                                        class="mb-2"
+                                                                    >
+                                                                        Tenggat
+                                                                        Waktu
+                                                                        Penyelesaian
+                                                                    </h6>
+                                                                    <div
+                                                                        class="input-group flatpickr"
+                                                                        id="flatpickr-date"
+                                                                    >
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control flatpickr-input"
+                                                                            placeholder="Tenggat Waktu Penyelesaian"
+                                                                            data-input=""
+                                                                            readonly="readonly"
+                                                                        />
+                                                                        <span
+                                                                            class="input-group-text input-group-addon"
+                                                                            data-toggle=""
+                                                                            ><svg
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                width="24"
+                                                                                height="24"
+                                                                                viewBox="0 0 24 24"
+                                                                                fill="none"
+                                                                                stroke="currentColor"
+                                                                                stroke-width="2"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                class="feather feather-calendar"
+                                                                            >
+                                                                                <rect
+                                                                                    x="3"
+                                                                                    y="4"
+                                                                                    width="18"
+                                                                                    height="18"
+                                                                                    rx="2"
+                                                                                    ry="2"
+                                                                                ></rect>
+                                                                                <line
+                                                                                    x1="16"
+                                                                                    y1="2"
+                                                                                    x2="16"
+                                                                                    y2="6"
+                                                                                ></line>
+                                                                                <line
+                                                                                    x1="8"
+                                                                                    y1="2"
+                                                                                    x2="8"
+                                                                                    y2="6"
+                                                                                ></line>
+                                                                                <line
+                                                                                    x1="3"
+                                                                                    y1="10"
+                                                                                    x2="21"
+                                                                                    y2="10"
+                                                                                ></line></svg
+                                                                        ></span>
+                                                                    </div>
                                                                 </div>
                                                                 <div
                                                                     class="row p-2"
@@ -801,18 +1744,18 @@
                                                             <div
                                                                 class="modal-footer"
                                                             >
-                                                                <button
-                                                                    type="button"
-                                                                    class="btn btn-success btn-xs"
-                                                                    data-bs-dismiss="modal"
+                                                                <a
+                                                                    href="/form-tindak-auditor"
+                                                                    class="btn btn-primary"
                                                                 >
                                                                     Tambah
                                                                     Temuan
-                                                                </button>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div
                                                     class="btn btn-warning btn-xs me-3 mb-4"
                                                 >
@@ -830,14 +1773,14 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="pt-0">
-                                                                Judul Temuan
+                                                                Temuan
                                                             </th>
                                                             <th class="pt-0">
-                                                                Waktu
+                                                                Kategori
+                                                            </th>
+                                                            <th class="pt-0">
+                                                                Tenggat Waktu
                                                                 Penyelesaian
-                                                            </th>
-                                                            <th class="pt-0">
-                                                                Detail Temuan
                                                             </th>
 
                                                             <th class="pt-0">
@@ -851,27 +1794,27 @@
                                                                 SDM Pengelola
                                                                 Keuangan
                                                             </td>
+                                                            <td>Minor</td>
                                                             <td>
                                                                 20 September
                                                                 2022
                                                             </td>
                                                             <td>
                                                                 <div
-                                                                    class="btn btn-info btn-xs mb-4 text-white"
+                                                                    class="btn btn-info btn-xs text-white"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#detail-temuan"
                                                                 >
-                                                                    Detail
-                                                                    Temuan
                                                                     <i
                                                                         data-feather="eye"
+                                                                        class="feather-16"
                                                                     ></i>
                                                                 </div>
+
                                                                 <div
                                                                     class="modal fade"
                                                                     id="detail-temuan"
                                                                     tabindex="-1"
-                                                                    aria-labelledby="exampleModalLabel"
                                                                     aria-hidden="true"
                                                                 >
                                                                     <div
@@ -887,7 +1830,7 @@
                                                                                     class="modal-title fs-5"
                                                                                     id="exampleModalLabel"
                                                                                 >
-                                                                                    Detail
+                                                                                    Ubah
                                                                                     Temuan
                                                                                     Audit
                                                                                 </h1>
@@ -899,7 +1842,7 @@
                                                                                 ></button>
                                                                             </div>
                                                                             <div
-                                                                                class="modal-body text-start"
+                                                                                class="modal-body"
                                                                             >
                                                                                 <div
                                                                                     class="row p-2"
@@ -907,16 +1850,13 @@
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
-                                                                                        Judul
                                                                                         Temuan
                                                                                     </h6>
                                                                                     <input
                                                                                         type="text"
                                                                                         class="form-control"
                                                                                         id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        disabled
-                                                                                        value="SDM Pengelolaan Keuangan"
+                                                                                        value="SDM Pengelola Keuangan"
                                                                                     />
                                                                                 </div>
                                                                                 <div
@@ -925,7 +1865,44 @@
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
-                                                                                        Fakta
+                                                                                        Kategori
+                                                                                        Temuan
+                                                                                    </h6>
+                                                                                    <select
+                                                                                        class="form-select"
+                                                                                        name="kategori_select"
+                                                                                        id="kategoriSelect"
+                                                                                        aria-invalid="false"
+                                                                                    >
+                                                                                        <option
+                                                                                            selected=""
+                                                                                            disabled=""
+                                                                                        >
+                                                                                            Pilih
+                                                                                            Kategori
+                                                                                            Temuan
+                                                                                        </option>
+                                                                                        <option
+                                                                                            selected
+                                                                                        >
+                                                                                            Observasi
+                                                                                        </option>
+                                                                                        <option>
+                                                                                            Minor
+                                                                                        </option>
+                                                                                        <option>
+                                                                                            Mayor
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div
+                                                                                    class="row p-2"
+                                                                                >
+                                                                                    <h6
+                                                                                        class="mb-2"
+                                                                                    >
+                                                                                        Keterangan
                                                                                         Temuan
                                                                                     </h6>
                                                                                     <textarea
@@ -933,7 +1910,6 @@
                                                                                         rows="5"
                                                                                         class="form-control text-wrap"
                                                                                         id="exampleInputText1"
-                                                                                        disabled
                                                                                     >
 Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
                                                                                     >
@@ -944,18 +1920,64 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
+                                                                                        Tenggat
                                                                                         Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
+                                                                                        Penyelesaian
                                                                                     </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                        disabled
-                                                                                    />
+                                                                                    <div
+                                                                                        class="input-group flatpickr"
+                                                                                        id="flatpickr-date"
+                                                                                    >
+                                                                                        <input
+                                                                                            type="text"
+                                                                                            class="form-control flatpickr-input"
+                                                                                            placeholder="Tenggat Waktu Penyelesaian"
+                                                                                            data-input=""
+                                                                                            readonly="readonly"
+                                                                                        />
+                                                                                        <span
+                                                                                            class="input-group-text input-group-addon"
+                                                                                            data-toggle=""
+                                                                                            ><svg
+                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                width="24"
+                                                                                                height="24"
+                                                                                                viewBox="0 0 24 24"
+                                                                                                fill="none"
+                                                                                                stroke="currentColor"
+                                                                                                stroke-width="2"
+                                                                                                stroke-linecap="round"
+                                                                                                stroke-linejoin="round"
+                                                                                                class="feather feather-calendar"
+                                                                                            >
+                                                                                                <rect
+                                                                                                    x="3"
+                                                                                                    y="4"
+                                                                                                    width="18"
+                                                                                                    height="18"
+                                                                                                    rx="2"
+                                                                                                    ry="2"
+                                                                                                ></rect>
+                                                                                                <line
+                                                                                                    x1="16"
+                                                                                                    y1="2"
+                                                                                                    x2="16"
+                                                                                                    y2="6"
+                                                                                                ></line>
+                                                                                                <line
+                                                                                                    x1="8"
+                                                                                                    y1="2"
+                                                                                                    x2="8"
+                                                                                                    y2="6"
+                                                                                                ></line>
+                                                                                                <line
+                                                                                                    x1="3"
+                                                                                                    y1="10"
+                                                                                                    x2="21"
+                                                                                                    y2="10"
+                                                                                                ></line></svg
+                                                                                        ></span>
+                                                                                    </div>
                                                                                 </div>
                                                                                 <div
                                                                                     class="row p-2"
@@ -972,19 +1994,32 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     />
                                                                                 </div>
                                                                             </div>
+                                                                            <div
+                                                                                class="modal-footer"
+                                                                            >
+                                                                                <a
+                                                                                    href="/form-tindak-auditor"
+                                                                                    class="btn btn-primary"
+                                                                                >
+                                                                                    Tambah
+                                                                                    Temuan
+                                                                                </a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </td>
 
-                                                            <td>
                                                                 <div
                                                                     class="btn btn-primary btn-xs text-white"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#ubah-temuan"
                                                                 >
-                                                                    Ubah
+                                                                    <i
+                                                                        data-feather="edit"
+                                                                        class="feather-16"
+                                                                    ></i>
                                                                 </div>
+
                                                                 <div
                                                                     class="modal fade"
                                                                     id="ubah-temuan"
@@ -1016,7 +2051,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                 ></button>
                                                                             </div>
                                                                             <div
-                                                                                class="modal-body text-start"
+                                                                                class="modal-body"
                                                                             >
                                                                                 <div
                                                                                     class="row p-2"
@@ -1024,15 +2059,13 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
-                                                                                        Judul
                                                                                         Temuan
                                                                                     </h6>
                                                                                     <input
                                                                                         type="text"
                                                                                         class="form-control"
                                                                                         id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        value="SDM Pengelolaan Keuangan"
+                                                                                        value="SDM Pengelola Keuangan"
                                                                                     />
                                                                                 </div>
                                                                                 <div
@@ -1041,7 +2074,44 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
-                                                                                        Fakta
+                                                                                        Kategori
+                                                                                        Temuan
+                                                                                    </h6>
+                                                                                    <select
+                                                                                        class="form-select"
+                                                                                        name="kategori_select"
+                                                                                        id="kategoriSelect"
+                                                                                        aria-invalid="false"
+                                                                                    >
+                                                                                        <option
+                                                                                            selected=""
+                                                                                            disabled=""
+                                                                                        >
+                                                                                            Pilih
+                                                                                            Kategori
+                                                                                            Temuan
+                                                                                        </option>
+                                                                                        <option
+                                                                                            selected
+                                                                                        >
+                                                                                            Observasi
+                                                                                        </option>
+                                                                                        <option>
+                                                                                            Minor
+                                                                                        </option>
+                                                                                        <option>
+                                                                                            Mayor
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+
+                                                                                <div
+                                                                                    class="row p-2"
+                                                                                >
+                                                                                    <h6
+                                                                                        class="mb-2"
+                                                                                    >
+                                                                                        Keterangan
                                                                                         Temuan
                                                                                     </h6>
                                                                                     <textarea
@@ -1059,17 +2129,64 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     <h6
                                                                                         class="mb-2"
                                                                                     >
+                                                                                        Tenggat
                                                                                         Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
+                                                                                        Penyelesaian
                                                                                     </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                    />
+                                                                                    <div
+                                                                                        class="input-group flatpickr"
+                                                                                        id="flatpickr-date"
+                                                                                    >
+                                                                                        <input
+                                                                                            type="text"
+                                                                                            class="form-control flatpickr-input"
+                                                                                            placeholder="Tenggat Waktu Penyelesaian"
+                                                                                            data-input=""
+                                                                                            readonly="readonly"
+                                                                                        />
+                                                                                        <span
+                                                                                            class="input-group-text input-group-addon"
+                                                                                            data-toggle=""
+                                                                                            ><svg
+                                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                                width="24"
+                                                                                                height="24"
+                                                                                                viewBox="0 0 24 24"
+                                                                                                fill="none"
+                                                                                                stroke="currentColor"
+                                                                                                stroke-width="2"
+                                                                                                stroke-linecap="round"
+                                                                                                stroke-linejoin="round"
+                                                                                                class="feather feather-calendar"
+                                                                                            >
+                                                                                                <rect
+                                                                                                    x="3"
+                                                                                                    y="4"
+                                                                                                    width="18"
+                                                                                                    height="18"
+                                                                                                    rx="2"
+                                                                                                    ry="2"
+                                                                                                ></rect>
+                                                                                                <line
+                                                                                                    x1="16"
+                                                                                                    y1="2"
+                                                                                                    x2="16"
+                                                                                                    y2="6"
+                                                                                                ></line>
+                                                                                                <line
+                                                                                                    x1="8"
+                                                                                                    y1="2"
+                                                                                                    x2="8"
+                                                                                                    y2="6"
+                                                                                                ></line>
+                                                                                                <line
+                                                                                                    x1="3"
+                                                                                                    y1="10"
+                                                                                                    x2="21"
+                                                                                                    y2="10"
+                                                                                                ></line></svg
+                                                                                        ></span>
+                                                                                    </div>
                                                                                 </div>
                                                                                 <div
                                                                                     class="row p-2"
@@ -1093,7 +2210,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                                     href="/form-tindak-auditor"
                                                                                     class="btn btn-primary"
                                                                                 >
-                                                                                    Ubah
+                                                                                    Tambah
                                                                                     Temuan
                                                                                 </a>
                                                                             </div>
@@ -1102,26 +2219,12 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                 </div>
                                                                 <button
                                                                     class="btn btn-danger btn-xs"
-                                                                    onclick="Swal.fire({
-                                                                    title: 'Anda yakin ingin menghapus temuan tersebut?',
-                                                                   
-                                                                    icon: 'warning',
-                                                                    showCancelButton: true,
-                                                                    cancelButtonText: 'Tidak',
-                                                                    confirmButtonColor: '#3085d6',
-                                                                    cancelButtonColor: '#d33',
-                                                                    confirmButtonText: 'Iya'
-                                                                  }).then((result) => {
-                                                                    if (result.isConfirmed) {
-                                                                      Swal.fire(
-                                                                        'Berhasil',
-                                                                        'Data Berhasil Dihapus',
-                                                                        'success'
-                                                                      )
-                                                                    }
-                                                                  })"
+                                                                    onclick="showSwal('hapus')"
                                                                 >
-                                                                    Hapus
+                                                                    <i
+                                                                        data-feather="trash"
+                                                                        class="feather-16"
+                                                                    ></i>
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -1133,6 +2236,9 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                 </div>
                             </div>
                         </div>
+                        <!-- END CHECKBOX TEMUAN -->
+
+                        <!-- CHECKBOX NILAI AUDITEE -->
                         <div
                             class="col-12 col-xl-12 stretch-card"
                             id="isi-nilai-auditee"
@@ -1150,64 +2256,225 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                 </h6>
                                             </div>
 
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
+                                            <div class="row border border-2">
+                                                <table
+                                                    class="table table-striped"
                                                 >
-                                                    <h6 class="mt-3">Nilai</h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="mt-4">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Jawaban"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="d-flex flex-row-reverse bd-highlight"
-                                            >
-                                                <div
-                                                    class="btn btn-primary mt-3"
-                                                    id="submit-"
-                                                >
-                                                    Submit
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 grid-margin">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <h5 class="mb-4">
-                                                    Nilai Auditee
-                                                </h5>
-                                                <h6 class="mb-4">
-                                                    Yessica Tamara
-                                                </h6>
-                                            </div>
-
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
-                                                >
-                                                    <h6 class="mt-3">Nilai</h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="mt-4">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Jawaban"
-                                                        />
-                                                    </div>
-                                                </div>
+                                                    <thead>
+                                                        <tr>
+                                                            <th
+                                                                scope="col"
+                                                            ></th>
+                                                            <th scope="col">
+                                                                Kurang
+                                                            </th>
+                                                            <th scope="col">
+                                                                Cukup
+                                                            </th>
+                                                            <th scope="col">
+                                                                Baik
+                                                            </th>
+                                                            <th scope="col">
+                                                                Sangat Baik
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Keterlibatan
+                                                                dalam
+                                                                Pelaksanaan
+                                                                Audit
+                                                            </th>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline"
+                                                                    id="kurang"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline"
+                                                                    id="cukup"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline"
+                                                                    id="baik"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline"
+                                                                    id="sangat-baik"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Manajemen Waktu
+                                                            </th>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline2"
+                                                                    id="kurang"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline2"
+                                                                    id="cukup"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline2"
+                                                                    id="baik"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline2"
+                                                                    id="sangat-baik"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Kemampuan
+                                                                Komunikasi
+                                                            </th>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline3"
+                                                                    id="kurang"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline3"
+                                                                    id="cukup"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline3"
+                                                                    id="baik"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline3"
+                                                                    id="sangat-baik"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Pelayanan Unit
+                                                                Kerja
+                                                            </th>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline4"
+                                                                    id="kurang"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline4"
+                                                                    id="cukup"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline4"
+                                                                    id="baik"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline4"
+                                                                    id="sangat-baik"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                Kemampuan
+                                                                Menanggapi
+                                                                Temuan untuk
+                                                                Unit Kerja
+                                                            </th>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline5"
+                                                                    id="kurang"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline5"
+                                                                    id="cukup"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline5"
+                                                                    id="baik"
+                                                                />
+                                                            </td>
+                                                            <td>
+                                                                <input
+                                                                    type="radio"
+                                                                    class="form-check-input"
+                                                                    name="radioInline5"
+                                                                    id="sangat-baik"
+                                                                />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                             <div
                                                 class="d-flex flex-row-reverse bd-highlight"
@@ -1224,6 +2491,9 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                 </div>
                             </div>
                         </div>
+                        <!-- END CHECKBOX NILAI AUDITEE -->
+
+                        <!-- CHECKBOX-JURNAL -->
                         <div
                             class="col-12 col-xl-12 stretch-card"
                             id="isi-jurnal"
@@ -1316,144 +2586,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                 </div>
                             </div>
                         </div>
-                        <div class="container text-center">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <div class="btn btn-primary">Kembali</div>
-                                </div>
-                                <div class="col">
-                                    <!-- Button trigger modal -->
-                                    <button
-                                        type="button"
-                                        id="btn-validasi"
-                                        class="btn btn-success"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        Validasi
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div
-                                        class="modal fade"
-                                        id="exampleModal"
-                                        tabindex="-1"
-                                        aria-labelledby="exampleModalLabel"
-                                        aria-hidden="true"
-                                    >
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1
-                                                        class="modal-title fs-5"
-                                                        id="exampleModalLabel"
-                                                    >
-                                                        Validasi
-                                                    </h1>
-                                                    <button
-                                                        type="button"
-                                                        class="btn-close"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close"
-                                                    ></button>
-                                                </div>
-                                                <div
-                                                    class="modal-body text-start"
-                                                >
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nama Penanda Tangan
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nama "
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nomor Dokumen
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nomor Dokumen"
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Tanda Tangan
-                                                        </h6>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                        >
-                                                            <div
-                                                                class="btn btn-primary"
-                                                                id="btn-qr"
-                                                            >
-                                                                Buat QR
-                                                            </div>
-                                                            <div
-                                                                class="btn btn-danger"
-                                                                id="btn-hapus-qr"
-                                                            >
-                                                                Hapus
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                            id="gbr-ttd"
-                                                        >
-                                                            <img
-                                                                src="{{
-                                                                    asset(
-                                                                        'assets/images/ia.png'
-                                                                    )
-                                                                }}"
-                                                                alt="logo"
-                                                                width="100"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button
-                                                        class="btn btn-primary mb-3"
-                                                        onclick="Swal.fire({
-                                                    title: 'Validasi?',
-                                                   
-                                                    icon: 'warning',
-                                                    showCancelButton: true,
-                                                    cancelButtonText: 'Tidak',
-                                                    confirmButtonColor: '#3085d6',
-                                                    cancelButtonColor: '#d33',
-                                                    confirmButtonText: 'Iya'
-                                                  }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                      Swal.fire(
-                                                        'Berhasil',
-                                                        'Validasi Berhasil',
-                                                        'success'
-                                                      )
-                                                    }
-                                                  })"
-                                                    >
-                                                        Validasi
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="btn btn-secondary disabled">
-                                        Selanjutnya
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- END CHECKBOX-JURNAL -->
                     </div>
                     <div
                         class="tab-pane fade"
@@ -1802,67 +2935,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                     Submit
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
-                                                >
-                                                    <h6 class="mt-3">
-                                                        File Bukti
-                                                    </h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div
-                                                        class="border border-2 p-2 mt-3"
-                                                    >
-                                                        <input
-                                                            class="form-control form-control-sm"
-                                                            id="formFileSm"
-                                                            type="file"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
-                                                >
-                                                    <h6 class="mt-3">
-                                                        Nama Bukti
-                                                    </h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="mt-4">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            value="Amiah Burton"
-                                                            placeholder="Enter Name"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div
-                                                    class="col-md-2 grid-margin stretch-card mt-3"
-                                                >
-                                                    <h6 class="mt-3">
-                                                        URL Bukti
-                                                    </h6>
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <div class="mt-4">
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            value="Amiah Burton"
-                                                            placeholder="Enter Name"
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div
                                                 class="d-flex flex-row-reverse bd-highlight"
                                             >
@@ -2067,11 +3140,11 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                     <i data-feather="plus"></i>
                                                     Tambah Temuan
                                                 </div>
+
                                                 <div
                                                     class="modal fade"
                                                     id="add-temuan"
                                                     tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true"
                                                 >
                                                     <div class="modal-dialog">
@@ -2104,16 +3177,34 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                     <h6
                                                                         class="mb-2"
                                                                     >
-                                                                        Rincian
-                                                                        Waktu
-                                                                        Penyelesaian
+                                                                        Judul
+                                                                        Temuan
                                                                     </h6>
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
                                                                         id="exampleInputText1"
                                                                         placeholder="Masukkan rincian waktu penyelesaian"
+                                                                        value="SDM Pengelolaan Keuangan"
                                                                     />
+                                                                </div>
+                                                                <div
+                                                                    class="row p-2"
+                                                                >
+                                                                    <h6
+                                                                        class="mb-2"
+                                                                    >
+                                                                        Fakta
+                                                                        Temuan
+                                                                    </h6>
+                                                                    <textarea
+                                                                        type="text"
+                                                                        rows="5"
+                                                                        class="form-control text-wrap"
+                                                                        id="exampleInputText1"
+                                                                    >
+Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
+                                                                    >
                                                                 </div>
                                                                 <div
                                                                     class="row p-2"
@@ -2123,13 +3214,14 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                     >
                                                                         Waktu
                                                                         Selesai
-                                                                        Penyelesaian
                                                                         Temuan
                                                                         Audit
                                                                     </h6>
                                                                     <input
-                                                                        type="date"
+                                                                        type="text"
                                                                         class="form-control"
+                                                                        id="exampleInputText1"
+                                                                        value="22 September 2022"
                                                                     />
                                                                 </div>
                                                                 <div
@@ -2150,332 +3242,16 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                             <div
                                                                 class="modal-footer"
                                                             >
-                                                                <button
-                                                                    type="button"
-                                                                    class="btn btn-success btn-xs"
-                                                                    data-bs-dismiss="modal"
+                                                                <a
+                                                                    href="/form-tindak-auditor"
+                                                                    class="btn btn-primary"
                                                                 >
-                                                                    Tambah
-                                                                    Temuan
-                                                                </button>
+                                                                    Ubah Temuan
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div
-                                                    class="btn btn-warning btn-xs me-3 mb-4"
-                                                >
-                                                    <i
-                                                        data-feather="printer"
-                                                    ></i>
-                                                    Cetak Temuan
-                                                </div>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table
-                                                    id="dataTableExample"
-                                                    class="table"
-                                                >
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="pt-0">
-                                                                Judul Temuan
-                                                            </th>
-                                                            <th class="pt-0">
-                                                                Waktu
-                                                                Penyelesaian
-                                                            </th>
-                                                            <th class="pt-0">
-                                                                Detail Temuan
-                                                            </th>
-
-                                                            <th class="pt-0">
-                                                                Aksi
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                SDM Pengelola
-                                                                Keuangan
-                                                            </td>
-                                                            <td>
-                                                                20 September
-                                                                2022
-                                                            </td>
-                                                            <td>
-                                                                <div
-                                                                    class="btn btn-info btn-xs mb-4 text-white"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#detail-temuan"
-                                                                >
-                                                                    Detail
-                                                                    Temuan
-                                                                    <i
-                                                                        data-feather="eye"
-                                                                    ></i>
-                                                                </div>
-                                                                <div
-                                                                    class="modal fade"
-                                                                    id="detail-temuan"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true"
-                                                                >
-                                                                    <div
-                                                                        class="modal-dialog"
-                                                                    >
-                                                                        <div
-                                                                            class="modal-content"
-                                                                        >
-                                                                            <div
-                                                                                class="modal-header bg-primary text-white"
-                                                                            >
-                                                                                <h1
-                                                                                    class="modal-title fs-5"
-                                                                                    id="exampleModalLabel"
-                                                                                >
-                                                                                    Detail
-                                                                                    Temuan
-                                                                                    Audit
-                                                                                </h1>
-                                                                                <button
-                                                                                    type="button"
-                                                                                    class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                ></button>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-body text-start"
-                                                                            >
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Judul
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        disabled
-                                                                                        value="SDM Pengelolaan Keuangan"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Fakta
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <textarea
-                                                                                        type="text"
-                                                                                        rows="5"
-                                                                                        class="form-control text-wrap"
-                                                                                        id="exampleInputText1"
-                                                                                        disabled
-                                                                                    >
-Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
-                                                                                    >
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                        disabled
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Lampiran
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        class="form-control"
-                                                                                        type="file"
-                                                                                        id="formFile"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <div
-                                                                    class="btn btn-primary btn-xs text-white"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#ubah-temuan"
-                                                                >
-                                                                    Ubah
-                                                                </div>
-                                                                <div
-                                                                    class="modal fade"
-                                                                    id="ubah-temuan"
-                                                                    tabindex="-1"
-                                                                    aria-hidden="true"
-                                                                >
-                                                                    <div
-                                                                        class="modal-dialog"
-                                                                    >
-                                                                        <div
-                                                                            class="modal-content"
-                                                                        >
-                                                                            <div
-                                                                                class="modal-header bg-primary text-white"
-                                                                            >
-                                                                                <h1
-                                                                                    class="modal-title fs-5"
-                                                                                    id="exampleModalLabel"
-                                                                                >
-                                                                                    Ubah
-                                                                                    Temuan
-                                                                                    Audit
-                                                                                </h1>
-                                                                                <button
-                                                                                    type="button"
-                                                                                    class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                ></button>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-body text-start"
-                                                                            >
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Judul
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        value="SDM Pengelolaan Keuangan"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Fakta
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <textarea
-                                                                                        type="text"
-                                                                                        rows="5"
-                                                                                        class="form-control text-wrap"
-                                                                                        id="exampleInputText1"
-                                                                                    >
-Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
-                                                                                    >
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Lampiran
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        class="form-control"
-                                                                                        type="file"
-                                                                                        id="formFile"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-footer"
-                                                                            >
-                                                                                <a
-                                                                                    href="/form-tindak-auditor"
-                                                                                    class="btn btn-primary"
-                                                                                >
-                                                                                    Ubah
-                                                                                    Temuan
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <button
-                                                                    class="btn btn-danger btn-xs"
-                                                                    onclick="Swal.fire({
-                                                                    title: 'Anda yakin ingin menghapus temuan tersebut?',
-                                                                   
-                                                                    icon: 'warning',
-                                                                    showCancelButton: true,
-                                                                    cancelButtonText: 'Tidak',
-                                                                    confirmButtonColor: '#3085d6',
-                                                                    cancelButtonColor: '#d33',
-                                                                    confirmButtonText: 'Iya'
-                                                                  }).then((result) => {
-                                                                    if (result.isConfirmed) {
-                                                                      Swal.fire(
-                                                                        'Berhasil',
-                                                                        'Data Berhasil Dihapus',
-                                                                        'success'
-                                                                      )
-                                                                    }
-                                                                  })"
-                                                                >
-                                                                    Hapus
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -2661,144 +3437,6 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container text-center">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <div class="btn btn-primary">Kembali</div>
-                                </div>
-                                <div class="col">
-                                    <!-- Button trigger modal -->
-                                    <button
-                                        type="button"
-                                        id="btn-validasi"
-                                        class="btn btn-success"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        Validasi
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div
-                                        class="modal fade"
-                                        id="exampleModal"
-                                        tabindex="-1"
-                                        aria-labelledby="exampleModalLabel"
-                                        aria-hidden="true"
-                                    >
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1
-                                                        class="modal-title fs-5"
-                                                        id="exampleModalLabel"
-                                                    >
-                                                        Validasi
-                                                    </h1>
-                                                    <button
-                                                        type="button"
-                                                        class="btn-close"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close"
-                                                    ></button>
-                                                </div>
-                                                <div
-                                                    class="modal-body text-start"
-                                                >
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nama Penanda Tangan
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nama "
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nomor Dokumen
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nomor Dokumen"
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Tanda Tangan
-                                                        </h6>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                        >
-                                                            <div
-                                                                class="btn btn-primary"
-                                                                id="btn-qr"
-                                                            >
-                                                                Buat QR
-                                                            </div>
-                                                            <div
-                                                                class="btn btn-danger"
-                                                                id="btn-hapus-qr"
-                                                            >
-                                                                Hapus
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                            id="gbr-ttd"
-                                                        >
-                                                            <img
-                                                                src="{{
-                                                                    asset(
-                                                                        'assets/images/ia.png'
-                                                                    )
-                                                                }}"
-                                                                alt="logo"
-                                                                width="100"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button
-                                                        class="btn btn-primary mb-3"
-                                                        onclick="Swal.fire({
-                                                    title: 'Validasi?',
-                                                   
-                                                    icon: 'warning',
-                                                    showCancelButton: true,
-                                                    cancelButtonText: 'Tidak',
-                                                    confirmButtonColor: '#3085d6',
-                                                    cancelButtonColor: '#d33',
-                                                    confirmButtonText: 'Iya'
-                                                  }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                      Swal.fire(
-                                                        'Berhasil',
-                                                        'Validasi Berhasil',
-                                                        'success'
-                                                      )
-                                                    }
-                                                  })"
-                                                    >
-                                                        Validasi
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="btn btn-secondary disabled">
-                                        Selanjutnya
                                     </div>
                                 </div>
                             </div>
@@ -3553,127 +4191,6 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                 20 September
                                                                 2022
                                                             </td>
-                                                            <td>
-                                                                <div
-                                                                    class="btn btn-info btn-xs mb-4 text-white"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#detail-temuan"
-                                                                >
-                                                                    Detail
-                                                                    Temuan
-                                                                    <i
-                                                                        data-feather="eye"
-                                                                    ></i>
-                                                                </div>
-                                                                <div
-                                                                    class="modal fade"
-                                                                    id="detail-temuan"
-                                                                    tabindex="-1"
-                                                                    aria-labelledby="exampleModalLabel"
-                                                                    aria-hidden="true"
-                                                                >
-                                                                    <div
-                                                                        class="modal-dialog"
-                                                                    >
-                                                                        <div
-                                                                            class="modal-content"
-                                                                        >
-                                                                            <div
-                                                                                class="modal-header bg-primary text-white"
-                                                                            >
-                                                                                <h1
-                                                                                    class="modal-title fs-5"
-                                                                                    id="exampleModalLabel"
-                                                                                >
-                                                                                    Detail
-                                                                                    Temuan
-                                                                                    Audit
-                                                                                </h1>
-                                                                                <button
-                                                                                    type="button"
-                                                                                    class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                ></button>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-body text-start"
-                                                                            >
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Judul
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        disabled
-                                                                                        value="SDM Pengelolaan Keuangan"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Fakta
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <textarea
-                                                                                        type="text"
-                                                                                        rows="5"
-                                                                                        class="form-control text-wrap"
-                                                                                        id="exampleInputText1"
-                                                                                        disabled
-                                                                                    >
-Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
-                                                                                    >
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                        disabled
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Lampiran
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        class="form-control"
-                                                                                        type="file"
-                                                                                        id="formFile"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
 
                                                             <td>
                                                                 <div
@@ -3683,121 +4200,7 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                                                 >
                                                                     Ubah
                                                                 </div>
-                                                                <div
-                                                                    class="modal fade"
-                                                                    id="ubah-temuan"
-                                                                    tabindex="-1"
-                                                                    aria-hidden="true"
-                                                                >
-                                                                    <div
-                                                                        class="modal-dialog"
-                                                                    >
-                                                                        <div
-                                                                            class="modal-content"
-                                                                        >
-                                                                            <div
-                                                                                class="modal-header bg-primary text-white"
-                                                                            >
-                                                                                <h1
-                                                                                    class="modal-title fs-5"
-                                                                                    id="exampleModalLabel"
-                                                                                >
-                                                                                    Ubah
-                                                                                    Temuan
-                                                                                    Audit
-                                                                                </h1>
-                                                                                <button
-                                                                                    type="button"
-                                                                                    class="btn-close"
-                                                                                    data-bs-dismiss="modal"
-                                                                                    aria-label="Close"
-                                                                                ></button>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-body text-start"
-                                                                            >
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Judul
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        placeholder="Masukkan rincian waktu penyelesaian"
-                                                                                        value="SDM Pengelolaan Keuangan"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Fakta
-                                                                                        Temuan
-                                                                                    </h6>
-                                                                                    <textarea
-                                                                                        type="text"
-                                                                                        rows="5"
-                                                                                        class="form-control text-wrap"
-                                                                                        id="exampleInputText1"
-                                                                                    >
-Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
-                                                                                    >
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Waktu
-                                                                                        Selesai
-                                                                                        Temuan
-                                                                                        Audit
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        id="exampleInputText1"
-                                                                                        value="22 September 2022"
-                                                                                    />
-                                                                                </div>
-                                                                                <div
-                                                                                    class="row p-2"
-                                                                                >
-                                                                                    <h6
-                                                                                        class="mb-2"
-                                                                                    >
-                                                                                        Lampiran
-                                                                                    </h6>
-                                                                                    <input
-                                                                                        class="form-control"
-                                                                                        type="file"
-                                                                                        id="formFile"
-                                                                                    />
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="modal-footer"
-                                                                            >
-                                                                                <a
-                                                                                    href="/form-tindak-auditor"
-                                                                                    class="btn btn-primary"
-                                                                                >
-                                                                                    Ubah
-                                                                                    Temuan
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+
                                                                 <button
                                                                     class="btn btn-danger btn-xs"
                                                                     onclick="Swal.fire({
@@ -4014,141 +4417,124 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                 </div>
                             </div>
                         </div>
-                        <div class="container text-center">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <div class="btn btn-primary">Kembali</div>
-                                </div>
-                                <div class="col">
-                                    <!-- Button trigger modal -->
-                                    <button
-                                        type="button"
-                                        id="btn-validasi"
-                                        class="btn btn-success"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal"
-                                    >
-                                        Validasi
-                                    </button>
+                    </div>
 
-                                    <!-- Modal -->
-                                    <div
-                                        class="modal fade"
-                                        id="exampleModal"
-                                        tabindex="-1"
-                                        aria-labelledby="exampleModalLabel"
-                                        aria-hidden="true"
-                                    >
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1
-                                                        class="modal-title fs-5"
-                                                        id="exampleModalLabel"
-                                                    >
-                                                        Validasi
-                                                    </h1>
-                                                    <button
-                                                        type="button"
-                                                        class="btn-close"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close"
-                                                    ></button>
-                                                </div>
-                                                <div
-                                                    class="modal-body text-start"
+                    <div class="container text-center">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="btn btn-primary">Kembali</div>
+                            </div>
+                            <div class="col">
+                                <!-- Button trigger modal -->
+                                <button
+                                    type="button"
+                                    id="btn-validasi"
+                                    class="btn btn-success"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#button-validasi"
+                                >
+                                    Validasi
+                                </button>
+
+                                <!-- ISI MODAL BUTTON VALIDASI -->
+                                <div
+                                    class="modal fade"
+                                    id="button-validasi"
+                                    tabindex="-1"
+                                    aria-labelledby="btn-validasi"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1
+                                                    class="modal-title fs-5"
+                                                    id="exampleModalLabel"
                                                 >
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nama Penanda Tangan
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nama "
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Nomor Dokumen
-                                                        </h6>
-                                                        <input
-                                                            type="text"
-                                                            class="form-control"
-                                                            id="exampleInputText1"
-                                                            placeholder="Masukkan Nomor Dokumen"
-                                                        />
-                                                    </div>
-                                                    <div class="row p-2">
-                                                        <h6 class="mb-2">
-                                                            Tanda Tangan
-                                                        </h6>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                        >
-                                                            <div
-                                                                class="btn btn-primary"
-                                                                id="btn-qr"
-                                                            >
-                                                                Buat QR
-                                                            </div>
-                                                            <div
-                                                                class="btn btn-danger"
-                                                                id="btn-hapus-qr"
-                                                            >
-                                                                Hapus
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="border border-2 p-2"
-                                                            id="gbr-ttd"
-                                                        >
-                                                            <img
-                                                                src="{{
-                                                                    asset(
-                                                                        'assets/images/ia.png'
-                                                                    )
-                                                                }}"
-                                                                alt="logo"
-                                                                width="100"
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                    Validasi
+                                                </h1>
+                                                <button
+                                                    type="button"
+                                                    class="btn-close"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"
+                                                ></button>
+                                            </div>
+                                            <div class="modal-body text-start">
+                                                <div class="row p-2">
+                                                    <h6 class="mb-2">
+                                                        Nama Penanda Tangan
+                                                    </h6>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="exampleInputText1"
+                                                        placeholder="Masukkan Nama "
+                                                    />
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button
-                                                        class="btn btn-primary mb-3"
-                                                        onclick="Swal.fire({
-                                                    title: 'Validasi?',
-                                                   
-                                                    icon: 'warning',
-                                                    showCancelButton: true,
-                                                    cancelButtonText: 'Tidak',
-                                                    confirmButtonColor: '#3085d6',
-                                                    cancelButtonColor: '#d33',
-                                                    confirmButtonText: 'Iya'
-                                                  }).then((result) => {
-                                                    if (result.isConfirmed) {
-                                                      Swal.fire(
-                                                        'Berhasil',
-                                                        'Validasi Berhasil',
-                                                        'success'
-                                                      )
-                                                    }
-                                                  })"
+                                                <div class="row p-2">
+                                                    <h6 class="mb-2">
+                                                        Nomor Dokumen
+                                                    </h6>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="exampleInputText1"
+                                                        placeholder="Masukkan Nomor Dokumen"
+                                                    />
+                                                </div>
+                                                <div class="row p-2">
+                                                    <h6 class="mb-2">
+                                                        Tanda Tangan
+                                                    </h6>
+                                                    <div
+                                                        class="border border-2 p-2"
                                                     >
-                                                        Validasi
-                                                    </button>
+                                                        <div
+                                                            class="btn btn-primary"
+                                                            id="btn-qr"
+                                                        >
+                                                            Buat QR
+                                                        </div>
+                                                        <div
+                                                            class="btn btn-danger"
+                                                            id="btn-hapus-qr"
+                                                        >
+                                                            Hapus
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="border border-2 p-2"
+                                                        id="gbr-ttd"
+                                                    >
+                                                        <img
+                                                            src="{{
+                                                                asset(
+                                                                    'assets/images/ia.png'
+                                                                )
+                                                            }}"
+                                                            alt="logo"
+                                                            width="100"
+                                                        />
+                                                    </div>
                                                 </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    class="btn btn-primary mb-3"
+                                                    onclick="showSwal('validasi')"
+                                                >
+                                                    Validasi
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="btn btn-secondary disabled">
-                                        Selanjutnya
-                                    </div>
+                                <!-- END ISI MODAL BUTTON VALIDASI -->
+                            </div>
+                            <div class="col">
+                                <div class="btn btn-secondary disabled">
+                                    Selanjutnya
                                 </div>
                             </div>
                         </div>
@@ -4156,19 +4542,15 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                 </div>
             </div>
         </div>
+        <!-- END CONTENT -->
     </div>
 </div>
 
-<!-- Plugin js for this page -->
-<script src="../../../assets/vendors/sweetalert2/sweetalert2.min.js"></script>
-<!-- End plugin js for this page -->
-
-<!-- Custom js for this page -->
-<script src="../../../assets/js/sweet-alert.js"></script>
-<!-- End custom js for this page -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
     $(function () {
+        $("#doc-2-pertanyaan2").hide();
+        $("#doc-2").hide();
         $("#btn-validasi").prop("disabled", true);
         $("#desc").hide();
         $("#pertanyaan").hide();
@@ -4189,8 +4571,11 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
         $("#btn-submit").click(function () {
             $("#lampiran-dokumen").show();
         });
-        $("#submit-bukti").click(function () {
-            $("#list").show();
+        $("#submit-bukti-dokumen").click(function () {
+            $("#doc-2").show();
+        });
+        $("#submit-bukti-dokumen2").click(function () {
+            $("#doc-2-pertanyaan2").show();
         });
         $("#temuan").click(function () {
             $("#isi-temuan").toggle();
@@ -4214,7 +4599,6 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
         $("#simpan-perubahan").click(function () {
             $("#btn-validasi").prop("disabled", false);
         });
-      
     });
 </script>
 @endsection

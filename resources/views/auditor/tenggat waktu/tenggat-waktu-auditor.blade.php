@@ -24,13 +24,11 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <div
-                                        class="d-flex justify-content-between align-items-baseline"
-                                    >
+                                    <div class="d-flex">
                                         <h6
                                             class="card-title mb-3 text-white border rounded-3 bg-danger p-2"
                                         >
-                                            List Unit
+                                            Daftar Unit
                                         </h6>
                                     </div>
 
@@ -96,32 +94,31 @@
                                     >
                                         <div class="card">
                                             <div class="card-body">
-                                                <div
-                                                    class="d-flex justify-content-between align-items-baseline mb-2"
-                                                ></div>
                                                 <div class="table-responsive">
                                                     <table
-                                                        class="table table-hover mb-0"
+                                                        id="dataTableExample"
+                                                        class="table"
                                                     >
                                                         <thead>
                                                             <tr>
                                                                 <th
                                                                     class="pt-0"
                                                                 >
-                                                                    Jenis Temuan
+                                                                    Temuan
                                                                 </th>
                                                                 <th
                                                                     class="pt-0"
                                                                 >
+                                                                    Kategori
+                                                                </th>
+                                                                <th
+                                                                    class="pt-0"
+                                                                >
+                                                                    Tenggat
                                                                     Waktu
                                                                     Penyelesaian
                                                                 </th>
-                                                                <th
-                                                                    class="pt-0"
-                                                                >
-                                                                    Detail
-                                                                    Temuan
-                                                                </th>
+
                                                                 <th
                                                                     class="pt-0"
                                                                 >
@@ -136,207 +133,240 @@
                                                                     Pengelola
                                                                     Keuangan
                                                                 </td>
-
+                                                                <td>Minor</td>
                                                                 <td>
-                                                                    15 September
+                                                                    20 September
                                                                     2022
                                                                 </td>
                                                                 <td>
-                                                                    <button
-                                                                        type="button"
-                                                                        class="btn btn-info text-white"
+                                                                    <!-- DETAIL TEMUAN -->
+                                                                    <div
+                                                                        class="btn btn-info btn-xs text-white"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#exampleModal"
+                                                                        data-bs-target="#detail-temuan"
                                                                     >
-                                                                        Lihat
-                                                                        Temuan
-                                                                    </button>
+                                                                        <i
+                                                                            data-feather="eye"
+                                                                            class="feather-16"
+                                                                        ></i>
+                                                                    </div>
 
+                                                                    <!-- ISI MODAL DETAIL TEMUAN -->
                                                                     <div
                                                                         class="modal fade"
-                                                                        id="exampleModal"
+                                                                        id="detail-temuan"
                                                                         tabindex="-1"
-                                                                        aria-labelledby="exampleModalLabel"
                                                                         aria-hidden="true"
                                                                     >
                                                                         <div
-                                                                            class="modal-dialog modal-dialog-scrollable"
+                                                                            class="modal-dialog"
                                                                         >
                                                                             <div
                                                                                 class="modal-content"
                                                                             >
                                                                                 <div
-                                                                                    class="modal-header"
+                                                                                    class="modal-header bg-primary text-white"
                                                                                 >
-                                                                                    <h5
-                                                                                        class="modal-title"
+                                                                                    <h1
+                                                                                        class="modal-title fs-5"
                                                                                         id="exampleModalLabel"
                                                                                     >
                                                                                         Detail
                                                                                         Temuan
-                                                                                    </h5>
+                                                                                        Audit
+                                                                                    </h1>
                                                                                     <button
                                                                                         type="button"
                                                                                         class="btn-close"
                                                                                         data-bs-dismiss="modal"
-                                                                                        aria-label="btn-close"
+                                                                                        aria-label="Close"
                                                                                     ></button>
                                                                                 </div>
                                                                                 <div
                                                                                     class="modal-body"
                                                                                 >
                                                                                     <div
-                                                                                        class="row"
+                                                                                        class="row p-2"
                                                                                     >
-                                                                                        <div
-                                                                                            class="judul-temuan mb-3"
+                                                                                        <h6
+                                                                                            class="mb-2"
                                                                                         >
-                                                                                            <label
-                                                                                                for="judul-temuan"
-                                                                                                class="form-label fw-bold"
-                                                                                                >Judul
-                                                                                                Temuan</label
-                                                                                            >
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                class="form-control"
-                                                                                                id="judul-temuan"
-                                                                                                autocomplete="off"
-                                                                                                placeholder="Judul Temuan"
-                                                                                                value="SDM Pengelola Keuangan"
-                                                                                                disabled
-                                                                                            />
-                                                                                        </div>
+                                                                                            Temuan
+                                                                                        </h6>
+                                                                                        <input
+                                                                                            type="text"
+                                                                                            class="form-control"
+                                                                                            id="exampleInputText1"
+                                                                                            value="SDM Pengelola Keuangan"
+                                                                                            disabled
+                                                                                        />
                                                                                     </div>
                                                                                     <div
-                                                                                        class="row"
+                                                                                        class="row p-2"
                                                                                     >
-                                                                                        <div
-                                                                                            class="fakta-temuan mb-3"
+                                                                                        <h6
+                                                                                            class="mb-2"
                                                                                         >
-                                                                                            <label
-                                                                                                for="fakta-temuan"
-                                                                                                class="form-label fw-bold"
-                                                                                                >Fakta
-                                                                                                Temuan</label
-                                                                                            >
-                                                                                            <textarea
-                                                                                                class="form-control"
-                                                                                                rows="10"
-                                                                                                value="jcnskjcn"
-                                                                                                disabled
-                                                                                            >
-Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
-                                                                                            >
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="row"
-                                                                                    >
-                                                                                        <div
-                                                                                            class="rincian-waktu mb-3"
+                                                                                            Kategori
+                                                                                            Temuan
+                                                                                        </h6>
+                                                                                        <select
+                                                                                            class="form-select"
+                                                                                            name="kategori_select"
+                                                                                            id="kategoriSelect"
+                                                                                            aria-invalid="false"
+                                                                                            disabled
                                                                                         >
-                                                                                            <label
-                                                                                                for="rincian-waktu"
-                                                                                                class="form-label fw-bold"
-                                                                                                >Rincian
-                                                                                                Waktu
-                                                                                                Penyelesaian
-                                                                                            </label>
-                                                                                            <input
-                                                                                                type="text"
-                                                                                                class="form-control"
-                                                                                                id="rincian-waktu"
-                                                                                                autocomplete="off"
-                                                                                                value="Akan diselesaikan dalam 2 minggu kerja"
-                                                                                                disabled
-                                                                                            />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="row"
-                                                                                    >
-                                                                                        <div
-                                                                                            class="waktu-selesai mb-3"
-                                                                                        >
-                                                                                            <label
-                                                                                                for="waktu-selesai"
-                                                                                                class="form-label fw-bold"
-                                                                                                >Waktu
-                                                                                                Selesai
-                                                                                                Penyelesaian
+                                                                                            <option
+                                                                                                selected=""
+                                                                                                disabled=""
+                                                                                            >
+                                                                                                Pilih
+                                                                                                Kategori
                                                                                                 Temuan
-                                                                                                Audit
-                                                                                            </label>
-                                                                                        </div>
+                                                                                            </option>
+                                                                                            <option
+                                                                                                selected
+                                                                                            >
+                                                                                                Observasi
+                                                                                            </option>
+                                                                                            <option>
+                                                                                                Minor
+                                                                                            </option>
+                                                                                            <option>
+                                                                                                Mayor
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </div>
+
+                                                                                    <div
+                                                                                        class="row p-2"
+                                                                                    >
+                                                                                        <h6
+                                                                                            class="mb-2"
+                                                                                        >
+                                                                                            Keterangan
+                                                                                            Temuan
+                                                                                        </h6>
+                                                                                        <textarea
+                                                                                            type="text"
+                                                                                            rows="5"
+                                                                                            class="form-control text-wrap"
+                                                                                            id="exampleInputText1"
+                                                                                            disabled
+                                                                                        >
+Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang muka yang sudah diotorisasi oleh marketing sales supervisor. Otorisasi dari supervisor biasanya diberikan dengan mudah tanpa memperhatikan batas maksimum yang bisa diberikan.</textarea
+                                                                                        >
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="row p-2"
+                                                                                    >
+                                                                                        <h6
+                                                                                            class="mb-2"
+                                                                                        >
+                                                                                            Tenggat
+                                                                                            Waktu
+                                                                                            Penyelesaian
+                                                                                        </h6>
                                                                                         <div
-                                                                                            class="row"
+                                                                                            class="input-group flatpickr"
+                                                                                            id="flatpickr-date"
                                                                                         >
                                                                                             <input
-                                                                                                type="date"
-                                                                                                class="form-control"
+                                                                                                type="text"
+                                                                                                class="form-control flatpickr-input"
+                                                                                                placeholder="Tenggat Waktu Penyelesaian"
+                                                                                                data-input="2023-03-09"
+                                                                                                readonly="readonly"
                                                                                                 disabled
                                                                                             />
+                                                                                            <span
+                                                                                                class="input-group-text input-group-addon"
+                                                                                                data-toggle=""
+                                                                                                ><svg
+                                                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                                                    width="24"
+                                                                                                    height="24"
+                                                                                                    viewBox="0 0 24 24"
+                                                                                                    fill="none"
+                                                                                                    stroke="currentColor"
+                                                                                                    stroke-width="2"
+                                                                                                    stroke-linecap="round"
+                                                                                                    stroke-linejoin="round"
+                                                                                                    class="feather feather-calendar"
+                                                                                                >
+                                                                                                    <rect
+                                                                                                        x="3"
+                                                                                                        y="4"
+                                                                                                        width="18"
+                                                                                                        height="18"
+                                                                                                        rx="2"
+                                                                                                        ry="2"
+                                                                                                    ></rect>
+                                                                                                    <line
+                                                                                                        x1="16"
+                                                                                                        y1="2"
+                                                                                                        x2="16"
+                                                                                                        y2="6"
+                                                                                                    ></line>
+                                                                                                    <line
+                                                                                                        x1="8"
+                                                                                                        y1="2"
+                                                                                                        x2="8"
+                                                                                                        y2="6"
+                                                                                                    ></line>
+                                                                                                    <line
+                                                                                                        x1="3"
+                                                                                                        y1="10"
+                                                                                                        x2="21"
+                                                                                                        y2="10"
+                                                                                                    ></line></svg
+                                                                                            ></span>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div
-                                                                                        class="row"
+                                                                                        class="row p-2"
                                                                                     >
-                                                                                        <div
-                                                                                            class="lampiran"
+                                                                                        <h6
+                                                                                            class="mb-2"
                                                                                         >
-                                                                                            <label
-                                                                                                for="lampiran"
-                                                                                                class="form-label fw-bold"
-                                                                                                >Lampiran
-                                                                                            </label>
-                                                                                        </div>
-                                                                                        <div
-                                                                                            class="row"
-                                                                                        >
-                                                                                            <div
-                                                                                                class="border border-2 p-2 col-5 me-2 bg-secondary bg-opacity-50"
-                                                                                            >
-                                                                                                <p
-                                                                                                    class="fs-6"
-                                                                                                >
-                                                                                                    Lampiran
-                                                                                                    Temuan
-                                                                                                    Final
-                                                                                                </p>
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="border border-2 p-2 col-5 bg-secondary bg-opacity-50"
-                                                                                            >
-                                                                                                <p
-                                                                                                    class="fs-6"
-                                                                                                >
-                                                                                                    Lampiran
-                                                                                                    Temuan
-                                                                                                    Final
-                                                                                                </p>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                            Lampiran
+                                                                                        </h6>
+                                                                                        <input
+                                                                                            class="form-control"
+                                                                                            type="file"
+                                                                                            id="formFile"
+                                                                                        />
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </td>
-                                                                <td>
+                                                                    <!-- END ISI MODAL DETAIL TEMUAN -->
+
+                                                                    <!-- END DETAIL TEMUAN -->
+
                                                                     <div
-                                                                        class="btn btn-primary disabled"
+                                                                        class="btn btn-primary btn-xs text-white disabled"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#ubah-temuan"
                                                                     >
-                                                                        Ubah
+                                                                        <i
+                                                                            data-feather="edit"
+                                                                            class="feather-16"
+                                                                        ></i>
                                                                     </div>
-                                                                    <div
-                                                                        class="btn btn-danger disabled"
+
+                                                                    <button
+                                                                        class="btn btn-danger btn-xs disabled"
                                                                     >
-                                                                        Hapus
-                                                                    </div>
+                                                                        <i
+                                                                            data-feather="trash"
+                                                                            class="feather-16"
+                                                                        ></i>
+                                                                    </button>
                                                                 </td>
                                                             </tr>
-                                                          
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -344,36 +374,9 @@ Kepala bagian keuangan memberikan uang muka berdasarkan formulir permintaan uang
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div
-                                        class="col-12 col-xl-12 grid-margin stretch-card"
-                                    >
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div
-                                                    class="d-flex justify-content-between align-items-baseline mb-2"
-                                                >
-                                                    Kalender
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div
-                                class="tab-pane fade show"
-                                id="lembaga-sertifikasi"
-                                role="tabpanel"
-                                aria-labelledby="sertifikasi-line-tab"
-                            >
-                                dkcnjkd
                             </div>
                         </div>
                     </div>
-
-                    @endsection
                 </div>
             </div>
         </div>

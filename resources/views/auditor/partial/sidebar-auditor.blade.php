@@ -25,12 +25,7 @@
                 </a>
             </li>
             <li class="nav-item nav-category">Pages</li>
-            <li class="nav-item">
-                <a href="/daftar-penugasan-audit" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Daftar Penugasan</span>
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a href="/daftar-audit-auditor" class="nav-link">
                     <i class="link-icon" data-feather="box"></i>
