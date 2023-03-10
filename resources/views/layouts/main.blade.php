@@ -35,6 +35,29 @@
         />
         <!-- endinject -->
 
+        <link rel="stylesheet" href="{{ asset('style/style.css') }}" />
+
+        <!-- Plugin fullcalendar -->
+        <link
+            rel="stylesheet"
+            href="{{ asset('assets/vendors/fullcalendar/main.min.css') }}"
+        />
+        <!-- Data Tables -->
+        <link
+            rel="stylesheet"
+            href="{{
+                asset(
+                    'assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css'
+                )
+            }}"
+        />
+        <!-- Plugin sweet alert -->
+        <link
+            rel="stylesheet"
+            href="{{ asset('assets/vendors/sweetalert2/sweetalert2.min.css') }}"
+        />
+        <!-- End of Custom plugin -->
+
         <!-- Plugin css for this page -->
         <link
             rel="stylesheet"
@@ -71,21 +94,53 @@
         @yield('body')
 
         <!-- core:js -->
-        <script src="../assets/vendors/core/core.js"></script>
+        <script src="{{ asset('assets/vendors/core/core.js') }}"></script>
         <!-- endinject -->
 
         <!-- Plugin js for this page -->
-        <script src="../assets/vendors/flatpickr/flatpickr.min.js"></script>
-        <script src="../assets/vendors/apexcharts/apexcharts.min.js"></script>
+        <script src="{{
+                asset('assets/vendors/flatpickr/flatpickr.min.js')
+            }}"></script>
+        <script src="{{
+                asset('assets/vendors/apexcharts/apexcharts.min.js')
+            }}"></script>
+        <!-- End plugin js for this page -->
+
+        <!-- Plugin js for this page -->
+        <script src="{{
+                asset('assets/vendors/datatables.net/jquery.dataTables.js')
+            }}"></script>
+        <script src="{{
+                asset(
+                    'assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js'
+                )
+            }}"></script>
+        <!-- End plugin js for this page -->
+
+        <!-- Plugin js for this page -->
+        <script src="{{
+                asset('assets/vendors/moment/moment.min.js')
+            }}"></script>
+        <script src="{{
+                asset('assets/vendors/fullcalendar/main.min.js')
+            }}"></script>
+        <script src="{{
+                asset('assets/vendors/sweetalert2/sweetalert2.min.js')
+            }}"></script>
         <!-- End plugin js for this page -->
 
         <!-- inject:js -->
-        <script src="../assets/vendors/feather-icons/feather.min.js"></script>
-        <script src="../assets/js/template.js"></script>
+        <script src="{{
+                asset('assets/vendors/feather-icons/feather.min.js')
+            }}"></script>
+        <script src="{{ asset('assets/js/template.js') }}"></script>
         <!-- endinject -->
 
         <!-- Custom js for this page -->
-        <script src="../assets/js/dashboard-light.js"></script>
+        <script src="{{ asset('assets/js/dashboard-light.js') }}"></script>
+        <script src="{{ asset('assets/js/fullcalendar.js') }}"></script>
+        <script src="{{ asset('assets/js/data-table.js') }}"></script>
+        <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
         <!-- End custom js for this page -->
     </body>
 </html>
