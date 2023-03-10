@@ -5,6 +5,7 @@ $(function () {
     showSwal = function (type) {
         "use strict";
         if (type === "basic") {
+<<<<<<< HEAD
             swal.fire({
                 titleText: "Keterangan Pengaduan",
                 html: "<p class='text-start'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rhoncus nisl velit, amet consectetur. Viverra vestibulum orci sem non lacus molestie ac. Facilisis tellus faucibus sed nibh arcu. Lorem vestibulum lorem tellus quis scelerisque facilisis urna sed lectus. Mauris donec sodales sapien pulvinar egestas diam. Malesuada feugiat amet volutpat rhoncus risus tortor purus a dolor. Amet nunc ultricies maecenas vestibulum sit nisi. Non augue tortor nunc enim neque, molestie quis quam. Vulputate consequat ac turpis quis ipsum faucibus dui. Commodo leo libero posuere tellus elementum neque aliquet nunc faucibus. Sollicitudin cursus morbi enim placerat. Amet posuere imperdiet mi neque rhoncus, morbi etiam consectetur id. Dignissim urna, pellentesque dui tellus dolor pharetra risus. Lectus malesuada ut condimentum viverra mi tristique faucibus. Tincidunt pharetra augue urna, convallis etiam sed aliquet euismod. Pretium quis scelerisque arcu cras convallis fermentum lobortis nunc, id. Pulvinar amet, ullamcorper eu odio eget sit arcu feugiat. Auctor massa vestibulum pretium, ullamcorper in. Id arcu in amet congue sit. Platea maecenas diam tristique ornare suspendisse placerat in. Vitae viverra eu lacus, elit ultrices.</p>",
@@ -518,6 +519,13 @@ $(function () {
                 },
                 width: "50%",
             });
+=======
+            Swal.fire({
+                text: "Any fool can use a computer",
+                confirmButtonText: "Close",
+                confirmButtonClass: "btn btn-danger",
+            });
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
         } else if (type === "title-and-text") {
             Swal.fire(
                 "The Internet?",
@@ -567,19 +575,34 @@ $(function () {
 
             swalWithBootstrapButtons
                 .fire({
+<<<<<<< HEAD
                     title: "Apakah anda ingin menyimpan?",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "me-2",
                     confirmButtonText: "Simpan",
                     cancelButtonText: "Batal",
+=======
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "me-2",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
                     reverseButtons: true,
                 })
                 .then((result) => {
                     if (result.value) {
                         swalWithBootstrapButtons.fire(
+<<<<<<< HEAD
                             "Disimpan!",
                             "Progress anda sudah disimpan",
+=======
+                            "Deleted!",
+                            "Your file has been deleted.",
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
                             "success"
                         );
                     } else if (
@@ -587,12 +610,18 @@ $(function () {
                         result.dismiss === Swal.DismissReason.cancel
                     ) {
                         swalWithBootstrapButtons.fire(
+<<<<<<< HEAD
                             "Batal",
                             "Silahkan isi kembali data dengan benar",
+=======
+                            "Cancelled",
+                            "Your imaginary file is safe :)",
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
                             "error"
                         );
                     }
                 });
+<<<<<<< HEAD
         } else if (type === "passing-parameter-delete-cancel") {
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass: {
@@ -714,10 +743,111 @@ $(function () {
                 timerProgressBar: true,
             });
 
+=======
+        } else if (type === "message-with-auto-close") {
+            let timerInterval;
+            Swal.fire({
+                title: "Auto close alert!",
+                html: "I will close in <b></b> milliseconds.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getHtmlContainer();
+                        if (content) {
+                            const b = content.querySelector("b");
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft();
+                            }
+                        }
+                    }, 100);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                },
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log("I was closed by the timer");
+                }
+            });
+        } else if (type === "message-with-custom-image") {
+            Swal.fire({
+                title: "Sweet!",
+                text: "Modal with a custom image.",
+                // imageUrl: 'https://unsplash.it/400/200',
+                imageUrl: "../../../assets/images/others/placeholder.jpg",
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: "Custom image",
+            });
+        } else if (type === "mixin") {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
             Toast.fire({
                 icon: "success",
                 title: "Signed in successfully",
             });
+<<<<<<< HEAD
+=======
+        } else if (type === "simpan-perubahan") {
+            Swal.fire({
+                title: "Ingin simpan perubahan?",
+
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Tidak",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Simpan",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Berhasil", "Data Berhasil Disimpan", "success");
+                }
+            });
+        } else if (type === "hapus") {
+            Swal.fire({
+                title: "Anda yakin ingin menghapus temuan tersebut?",
+
+                icon: "warning",
+                showCancelButton: true,
+                cancelButtonText: "Tidak",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Iya",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Berhasil", "Data Berhasil Dihapus", "success");
+                }
+            });
+        }else if(type==='validasi'){
+            Swal.fire({
+                title: 'Validasi?',
+               
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: 'Tidak',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Iya'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    'Berhasil',
+                    'Validasi Berhasil',
+                    'success'
+                  )
+                }
+              })
+>>>>>>> 1392f9898906bb96e3b0b521658f81cc1b01c33d
         }
     };
 });
