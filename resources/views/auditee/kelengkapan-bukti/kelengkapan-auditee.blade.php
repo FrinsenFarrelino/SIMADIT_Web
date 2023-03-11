@@ -25,13 +25,7 @@
                                         id="dataTableExample_filter"
                                         class="dataTables_filter mb-4"
                                     >
-                                        <label
-                                            ><input
-                                                type="search"
-                                                class="form-control"
-                                                placeholder="Search"
-                                                aria-controls="dataTableExample"
-                                        /></label>
+                                     
                                     </div>
                                     <table id="dataTableExample" class="table">
                                         <thead>
@@ -82,7 +76,7 @@
                                                 <td>
                                                     <a
                                                         class="btn btn-primary btn-xs"
-                                                        href="#"
+                                                        href="/form-bukti-auditee"
                                                         role="button"
                                                         >Tindak Lanjut</a
                                                     >
@@ -94,14 +88,14 @@
                                                 <td>15 September 2022</td>
                                                 <td>
                                                     <span
-                                                        class="badge bg-warning"
-                                                        >Hampir Lengkap</span
+                                                        class="badge bg-success"
+                                                        >Lengkap</span
                                                     >
                                                 </td>
                                                 <td>
                                                     <a
                                                         class="btn btn-primary btn-xs"
-                                                        href="#"
+                                                        href="/form-bukti-auditee"
                                                         role="button"
                                                         >Tindak Lanjut</a
                                                     >

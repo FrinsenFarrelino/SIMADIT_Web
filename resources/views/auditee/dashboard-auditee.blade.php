@@ -324,13 +324,7 @@
                                     id="dataTableExample_filter"
                                     class="dataTables_filter mb-4"
                                 >
-                                    <label
-                                        ><input
-                                            type="search"
-                                            class="form-control"
-                                            placeholder="Search"
-                                            aria-controls="dataTableExample"
-                                    /></label>
+                                   
                                 </div>
                                 <table id="dataTableExample" class="table">
                                     <thead>
@@ -386,8 +380,8 @@
                                             <td>Keuangan</td>
                                             <td>15 September 2022</td>
                                             <td>
-                                                <span class="badge bg-warning"
-                                                    >Hampir Lengkap</span
+                                                <span class="badge bg-success"
+                                                    >Lengkap</span
                                                 >
                                             </td>
                                             <td>
